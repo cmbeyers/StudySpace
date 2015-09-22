@@ -1,0 +1,20 @@
+Update ugli ground floor now that back has been changed
+Revamp database stores to store region current values, capacities
+Start redoing switch statements to check for "UGLI" at start of AP name
+Design HTML interface
+Python calls to the Database, retrieve region values, update selection for "displayed values"
+Figure out server issue, need JAVA running somewhere?
+SQL database instead? How to update SQL in java, or how to call mongoDB from python
+Update Graphics for floors?
+
+Desktop Computers, database access?
+Parking spaces
+
+Possible Additions
+Add User input for coffee shops
+
+git add -A     adds whatever files you have added
+git commit -m "message"
+git push origin master    pulls all data
+
+
