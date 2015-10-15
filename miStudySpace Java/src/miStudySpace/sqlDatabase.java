@@ -16,19 +16,36 @@ public class sqlDatabase {
  static String oracleUserName = "cmbeyers"; //replace with your Oracle account name
  static String password = "Clayton5"; //replace with your Oracle password
   
-  public sqlDatabase() throws SQLException {
+ 
+ String  driverName ="oracle.jdbc.driver.OracleDriver"; // for Oracle
+ // String driverName = “com.mysql.jdbc.Driver”; //for MySql
+ String serverName = "localhost"; // Use this server.
+ String portNumber = "1521";
+ String sid = "orcl";
+ String url="jdbc:oracle:thin:@"+serverName+":"+ portNumber+":"+sid; // for Oracle
+  public sqlDatabase() {
     super();
-    try {
-      Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
-    } catch (InstantiationException e1) {
-      e1.printStackTrace();
-    } catch (IllegalAccessException e1) {
-      e1.printStackTrace();
-    } catch (ClassNotFoundException e1) {
-      e1.printStackTrace();
+    if(!dbConnector()){
+      System.out.println("Database connection failed");
     }
-    oracleConnection = DriverManager.getConnection("jdbc:oracle:thin:@forktail.dsc.umich.edu:1521:COURSEDB", oracleUserName, password);
   }
+  public boolean dbConnector(){
+    try {
+      // Load the JDBC driver
+       Class.forName(driverName);
+      // Create a connection to the database
+      oracleConnection = DriverManager.getConnection(url, oracleUserName, password);
+  } catch (ClassNotFoundException e) {
+      // Could not find the database driver
+      System.out.println("ClassNotFoundException : "+e.getMessage());
+      return false;
+  } catch (SQLException e) {
+      // Could not connect to the database
+      System.out.println(e.getMessage());
+      return false;
+  }
+    return true;
+}
   
   public void updateRegions(Vector<RegionPacket> regionPackets) {
     // Find the following information from your database and store the information as shown 

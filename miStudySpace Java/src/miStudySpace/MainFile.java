@@ -15,12 +15,7 @@ public class MainFile
 
   public static void main( String[] args ) throws IOException
   {
-    try {
-      db = new sqlDatabase();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    db = new sqlDatabase();
     win = new HomeScreen();
     win.setMinimumSize(new Dimension(400, 400));
     //win.pack();
