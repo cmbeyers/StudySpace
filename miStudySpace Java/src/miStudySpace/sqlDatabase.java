@@ -35,22 +35,26 @@ public class sqlDatabase {
     try (Statement stmt = 
         oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
-    //MAX LENGTH
-    String updateQuery = "";
-    stmt.executeQuery(updateQuery);
+      String updateQuery = "";
+      for(RegionPacket reg : regionPackets){
+        updateQuery = "UPDATE regions reg SET (current_occupancy) = "+reg.currentOccupancy+" where reg.region_name = "+reg.regionName+" and reg.floor_name = "+reg.floorName+" and reg.library_name = "+reg.libraryName;
+        stmt.executeQuery(updateQuery);
+      }
     stmt.close();
     } catch (SQLException err) {
     System.err.println(err.getMessage());
       }
   }
-  public void updateFloors(Vector<FloorPacket> inputList) {
+  public void updateFloors(Vector<FloorPacket> floorPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
         oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
-    //MAX LENGTH
-    String updateQuery = "";
-    stmt.executeQuery(updateQuery);
+      String updateQuery = "";
+      for(FloorPacket flo : floorPackets){
+        updateQuery = "floors floor SET (current_occupancy) = "+flo.currentOccupancy+" where floor.floor_name = "+flo.floorName+" and floor.library_name = "+flo.libraryName;
+        stmt.executeQuery(updateQuery);
+      }
     stmt.close();
     } catch (SQLException err) {
     System.err.println(err.getMessage());
@@ -61,9 +65,11 @@ public class sqlDatabase {
     try (Statement stmt = 
         oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
-    //MAX LENGTH
     String updateQuery = "";
-    stmt.executeQuery(updateQuery);
+    for(LibraryPacket lib : libraryPackets){
+      updateQuery = "UPDATE libraries lib SET (current_occupancy) =  "+lib.currentOccupancy+" where lib.library_name = "+lib.libraryName;
+      stmt.executeQuery(updateQuery);
+    }
     stmt.close();
     } catch (SQLException err) {
     System.err.println(err.getMessage());
