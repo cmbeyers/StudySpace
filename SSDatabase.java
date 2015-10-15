@@ -1,4 +1,4 @@
-package StudySpace;
+package miStudySpace;
 import java.awt.List;
 import java.net.UnknownHostException;
 import java.util.ArrayList;

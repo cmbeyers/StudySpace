@@ -1,4 +1,4 @@
-package StudySpace;
+package miStudySpace;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -32,6 +32,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -74,6 +75,9 @@ public class HomeScreen extends JFrame {
   public JLabel northStatusInt;
   public JLabel southStatusInt;
   public JLabel centerStatusInt;
+  public Vector<RegionPacket> regionPackets;
+  public Vector<FloorPacket> floorPackets;
+  public Vector<LibraryPacket> libraryPackets;
   public Timer timer;
   //Current attachment being loaded into db
   public File curAttachment;
@@ -107,9 +111,10 @@ public class HomeScreen extends JFrame {
     //Vector<String> AP_names;
     APNames = new Vector<String>();
     statMap = new HashMap<String, Integer>();
+    regionPackets = new Vector<RegionPacket>();
+    floorPackets = new Vector<FloorPacket>();
+    libraryPackets = new Vector<LibraryPacket>();
     reader = new MailReader();
-    SSDatabase.init();
-    getDBStats();
     
     String[] buildings = { "Shapiro Undergrad Library", "Hatcher Graduate Library", "Duderstadt" };
     //String[] floors = { "Select your building First"};
@@ -598,7 +603,6 @@ public class Listener implements ActionListener
       //curAttachment = new File("C:\\Users\\Clay\\Documents\\Senior Year\\UC 270\\src\\StudySpace\\uglifinal.txt");
       if(curAttachment!=null)
         getData(curAttachment);
-      performUpdate();
       updateGUI();
     }
     else{
@@ -609,9 +613,8 @@ public class Listener implements ActionListener
   }
 }
 }
-public void getDBStats(){
-  SSDatabase.updateMap();
-  
+public void updateSQLDB(){
+  getShapiroStats();
 }
 public void updateGUI(){
   //URL imageURL = image_load.getResource("https://www.osha.gov/doc/engineering/images/2012_r_03/2012_r_03_fig02.jpg");
@@ -663,7 +666,7 @@ public void updateGUI(){
     floorImage.setSize(400, 600);
   }
   if(floor != -1){
-    getFloorStats(floor);
+    //getFloorStats(floor);
     setStatusColor(floorTotal, floor, "All");
     floorStatusInt.setText("<html><div style=\"text-align: center;\">" + floorTotal.toString() + 
         " of "+ floorMax + "</html>" );
@@ -688,10 +691,6 @@ public void getTextFile(){
   curAttachment = reader.getAttachment();
 }
 
-public void performUpdate(){
-  SSDatabase.updateStats(APNames, statMap);
-  
-}
 public static void updateAP(String name, String stat){
   if(!statMap.containsKey(name)){
     //System.out.println("Adding to Vector: " + name);
@@ -699,10 +698,14 @@ public static void updateAP(String name, String stat){
   }
   statMap.put(name, Integer.parseInt(stat));
 }
-public void getFloorStats(Integer floor){
+public void getShapiroStats(){
+  regionPackets = new Vector<RegionPacket>();
+  floorPackets = new Vector<FloorPacket>();
+  libraryPackets = new Vector<LibraryPacket>();
   //System.out.println("Getting Stats for Floor:" + floor);
   String floorStr = null;
   floorTotal = northTotal = southTotal = centerTotal = 0;
+  for(Integer floor = 0; floor < 5; floor++){
   if(floor == 0){
     floorStr = "-B";
   }
@@ -785,6 +788,43 @@ public void getFloorStats(Integer floor){
   else if(fillRatio <= .66 && fillRatio > .33){libraryStatus.setBackground(Color.YELLOW);}
   else if(fillRatio <= 1 && fillRatio > .66){libraryStatus.setBackground(Color.RED);}
   else{libraryStatus.setBackground(Color.RED);}
+  ///SET UP THE SQL PACKETS
+  if(floor == 0){
+    floorPackets.add(new FloorPacket("Shapiro","Basement",floorTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Basement", "North",northTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Basement", "Center",centerTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Basement", "South",southTotal));
+  }
+  else if(floor == 1){
+    floorPackets.add(new FloorPacket("Shapiro","First",floorTotal));
+    regionPackets.add(new RegionPacket("Shapiro","First", "North",northTotal));
+    regionPackets.add(new RegionPacket("Shapiro","First", "Center",centerTotal));
+    regionPackets.add(new RegionPacket("Shapiro","First", "South",southTotal));
+  }
+  else if(floor == 2){
+    floorPackets.add(new FloorPacket("Shapiro","Second",floorTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Second", "North",northTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Second", "Center",centerTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Second", "South",southTotal));
+  }
+  else if(floor == 3){
+    floorPackets.add(new FloorPacket("Shapiro","Third",floorTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Third", "North",northTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Third", "South",southTotal));
+  }
+  if(floor == 0){
+    floorPackets.add(new FloorPacket("Shapiro","Fourth",floorTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Fourth", "North",northTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Fourth", "Center",centerTotal));
+    regionPackets.add(new RegionPacket("Shapiro","Fourth", "South",southTotal));
+  }
+  }
+  libraryPackets.addElement(new LibraryPacket("Shapiro", libraryTotal));
+  MainFile.db.updateFloors(floorPackets);
+  MainFile.db.updateLibraries(libraryPackets);
+  MainFile.db.updateRegions(regionPackets);
+  
+  
 }
 public void getData(File inFile){
   
@@ -866,12 +906,11 @@ class AutoUpdate extends TimerTask {
       //curAttachment = new File("C:\\Users\\Clay\\Documents\\Senior Year\\UC 270\\src\\StudySpace\\uglifinal.txt");
       if(curAttachment!=null){
         getData(curAttachment);
-        performUpdate();
+        updateSQLDB();
         updateGUI();
       }
     }
     else{
-      getDBStats();
       updateGUI();
     }
     //timer.cancel(); //Not necessary because we call System.exit

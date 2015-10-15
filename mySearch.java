@@ -1,4 +1,4 @@
-package StudySpace;
+package miStudySpace;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;

@@ -1,4 +1,4 @@
-package StudySpace;
+package miStudySpace;
 
 import java.util.*;
 import javax.mail.*;

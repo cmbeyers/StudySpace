@@ -1,4 +1,4 @@
-package StudySpace;
+package miStudySpace;
 
 import java.io.BufferedInputStream;
 import java.io.File;
