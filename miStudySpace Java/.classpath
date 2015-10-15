@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="src/" kind="src" path=""/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Clay/Documents/StudySpaceGit/StudySpace/miStudySpace Java/externalArchives/ojdbc6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Clay/Documents/StudySpaceGit/StudySpace/miStudySpace Java/externalArchives/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Clay/Documents/StudySpaceGit/StudySpace/miStudySpace Java/externalArchives/commons-lang3-3.3.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Clay/Documents/StudySpaceGit/StudySpace/miStudySpace Java/externalArchives/commons-lang3-3.3.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Clay/Documents/StudySpaceGit/StudySpace/miStudySpace Java/externalArchives/javax.mail.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
