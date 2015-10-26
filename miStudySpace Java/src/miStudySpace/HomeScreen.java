@@ -869,6 +869,9 @@ public void getData(File inFile){
   }
   //GRAB THE TIMESTAMP
   String hourString = null;
+  //Move past the word date
+  timeStamp = timeStamp.substring(timeStamp.indexOf(":")+1);
+  timeStamp=timeStamp.trim();
   hourString = timeStamp.substring(0, timeStamp.indexOf(":")).trim();
   if(Integer.parseInt(hourString) == hourIndex){
     numIntervalsThisHour++;

@@ -1,0 +1,49 @@
+
+library_display = new LibraryOutput();
+
+<script>
+document.getElementById("shapiro_button").addEventListener("click", function (event){
+	console.log("Shapiro Selected");
+	library_display.setLibrary("Shapiro"));
+},false);
+
+document.getElementById("law_button").addEventListener("click", function (event){
+	console.log("Law Selected");
+	library_display.setLibrary("Law"));
+},false);
+
+document.getElementById("duderstadt_button").addEventListener("click", function (event){
+	console.log("Duderstadt Selected");
+	library_display.setLibrary("Duderstadt"));
+},false);
+
+document.getElementById("hatcher_button").addEventListener("click", function (event){
+	console.log("Hatcher Selected");
+	library_display.setLibrary("Hatcher"));
+},false);
+
+document.getElementById("shapiro_info_button").addEventListener("click", function (event){
+	console.log("Shapiro Info Selected");
+	library_display.displayLibraryInfo("Shapiro"));
+},false);
+
+document.getElementById("law_info_button").addEventListener("click", function (event){
+	console.log("Law Info Selected");
+	library_display.displayLibraryInfo("Law"));
+},false);
+
+document.getElementById("duderstadt_info_button").addEventListener("click", function (event){
+	console.log("Duderstadt Info Selected");
+	library_display.displayLibraryInfo("Duderstadt"));
+},false);
+
+document.getElementById("hatcher_info_button").addEventListener("click", function (event){
+	console.log("Hatcher Info Selected");
+	library_display.displayLibraryInfo("Hatcher"));
+},false);
+
+
+
+
+
+</script>
