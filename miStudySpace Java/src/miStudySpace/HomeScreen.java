@@ -78,6 +78,7 @@ public class HomeScreen extends JFrame {
   public Vector<RegionPacket> regionPackets;
   public Vector<FloorPacket> floorPackets;
   public Vector<LibraryPacket> libraryPackets;
+  public Vector<HourStatPacket> hourStatPackets;
   public Timer timer;
   //Current attachment being loaded into db
   public File curAttachment;
@@ -94,6 +95,8 @@ public class HomeScreen extends JFrame {
   public Integer centerTotal;
   public Integer southTotal;
   public String[] floors;
+  public Integer hourIndex; //This keeps the hour you are currently grabbing from in the attachment
+  public Integer numIntervalsThisHour; //This is the number of 5 minute intervals you have grabbed for this hour, use for avg
   //Listener primarily used for floor selection
   private Listener hush;
   
@@ -105,7 +108,8 @@ public class HomeScreen extends JFrame {
     JPanel screenPanel = new JPanel(new FlowLayout());
     //screenPanel.setBackground(new Color(120,135,171));
     hush = new Listener();
-    
+    hourIndex = 0;
+    numIntervalsThisHour = 0;
     
     
     //Vector<String> AP_names;
@@ -114,6 +118,7 @@ public class HomeScreen extends JFrame {
     regionPackets = new Vector<RegionPacket>();
     floorPackets = new Vector<FloorPacket>();
     libraryPackets = new Vector<LibraryPacket>();
+    hourStatPackets = new Vector<HourStatPacket>();
     reader = new MailReader();
     
     String[] buildings = { "Shapiro Undergrad Library", "Hatcher Graduate Library", "Duderstadt" };
@@ -702,6 +707,7 @@ public void getShapiroStats(){
   regionPackets = new Vector<RegionPacket>();
   floorPackets = new Vector<FloorPacket>();
   libraryPackets = new Vector<LibraryPacket>();
+  hourStatPackets = new Vector<HourStatPacket>();
   //System.out.println("Getting Stats for Floor:" + floor);
   String floorStr = null;
   floorTotal = northTotal = southTotal = centerTotal = 0;
@@ -791,29 +797,34 @@ public void getShapiroStats(){
   ///SET UP THE SQL PACKETS
   if(floor == 0){
     floorPackets.add(new FloorPacket("Shapiro","Basement",floorTotal));
+    hourStatPackets.add(new HourStatPacket("Shapiro","Basement", floorTotal/219.0, hourIndex,numIntervalsThisHour));
     regionPackets.add(new RegionPacket("Shapiro","Basement", "North",northTotal));
     regionPackets.add(new RegionPacket("Shapiro","Basement", "Center",centerTotal));
     regionPackets.add(new RegionPacket("Shapiro","Basement", "South",southTotal));
   }
   else if(floor == 1){
     floorPackets.add(new FloorPacket("Shapiro","First",floorTotal));
+    hourStatPackets.add(new HourStatPacket("Shapiro","First",floorTotal/404.0, hourIndex,numIntervalsThisHour));
     regionPackets.add(new RegionPacket("Shapiro","First", "North",northTotal));
     regionPackets.add(new RegionPacket("Shapiro","First", "Center",centerTotal));
     regionPackets.add(new RegionPacket("Shapiro","First", "South",southTotal));
   }
   else if(floor == 2){
     floorPackets.add(new FloorPacket("Shapiro","Second",floorTotal));
+    hourStatPackets.add(new HourStatPacket("Shapiro","Second",floorTotal/342.0, hourIndex,numIntervalsThisHour));
     regionPackets.add(new RegionPacket("Shapiro","Second", "North",northTotal));
     regionPackets.add(new RegionPacket("Shapiro","Second", "Center",centerTotal));
     regionPackets.add(new RegionPacket("Shapiro","Second", "South",southTotal));
   }
   else if(floor == 3){
     floorPackets.add(new FloorPacket("Shapiro","Third",floorTotal));
+    hourStatPackets.add(new HourStatPacket("Shapiro","Third",floorTotal/206.0, hourIndex,numIntervalsThisHour));
     regionPackets.add(new RegionPacket("Shapiro","Third", "North",northTotal));
     regionPackets.add(new RegionPacket("Shapiro","Third", "South",southTotal));
   }
-  if(floor == 0){
+  if(floor == 4){
     floorPackets.add(new FloorPacket("Shapiro","Fourth",floorTotal));
+    hourStatPackets.add(new HourStatPacket("Shapiro","Fourth",floorTotal/228.0, hourIndex,numIntervalsThisHour));
     regionPackets.add(new RegionPacket("Shapiro","Fourth", "North",northTotal));
     regionPackets.add(new RegionPacket("Shapiro","Fourth", "Center",centerTotal));
     regionPackets.add(new RegionPacket("Shapiro","Fourth", "South",southTotal));
@@ -823,7 +834,7 @@ public void getShapiroStats(){
   MainFile.db.updateFloors(floorPackets);
   MainFile.db.updateLibraries(libraryPackets);
   MainFile.db.updateRegions(regionPackets);
-  
+  MainFile.db.updateHourlyStats(hourStatPackets);
   
 }
 public void getData(File inFile){
@@ -841,11 +852,11 @@ public void getData(File inFile){
   String line = null;
   String uniqueUsers = null;
   String multipleAP = null;
-  
+  String timeStamp= null;
   int count = 0;
   try {
     br.readLine();//Date
-    br.readLine();//Time
+    timeStamp = br.readLine();//Time
     br.readLine();//Blank
     br.readLine();//Total Devices
     uniqueUsers = br.readLine(); // Unique Users
@@ -856,7 +867,17 @@ public void getData(File inFile){
     // TODO Auto-generated catch block
     e.printStackTrace();
   }
-  
+  //GRAB THE TIMESTAMP
+  String hourString = null;
+  hourString = timeStamp.substring(0, timeStamp.indexOf(":")).trim();
+  if(Integer.parseInt(hourString) == hourIndex){
+    numIntervalsThisHour++;
+  }
+  else{
+    numIntervalsThisHour=1;
+    hourIndex = Integer.parseInt(hourString);
+  }
+  ////
   while(uniqueUsers.charAt(count) != ':' && count < uniqueUsers.length()){count++;}
   count+=2; // Moves past space
   Integer totalUsers = Integer.parseInt(uniqueUsers.substring(count));

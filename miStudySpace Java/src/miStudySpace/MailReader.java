@@ -41,7 +41,6 @@ public class MailReader
     // Constructor of the calss.
     
     public MailReader() {
-        
     }
     public Message getMessage(){
       return curMessage;
