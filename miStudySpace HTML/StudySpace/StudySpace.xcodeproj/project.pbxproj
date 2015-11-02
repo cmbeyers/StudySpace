@@ -1,0 +1,118 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		D64D8E621BE31A7C00196287 /* bootstrap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bootstrap; sourceTree = "<group>"; };
+		D64D8E631BE31A9600196287 /* Dude.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dude.png; sourceTree = "<group>"; };
+		D64D8E641BE31A9600196287 /* Hatcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hatcher.png; sourceTree = "<group>"; };
+		D64D8E651BE31A9600196287 /* LawLib.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LawLib.png; sourceTree = "<group>"; };
+		D64D8E661BE31A9600196287 /* Shapiro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shapiro.png; sourceTree = "<group>"; };
+		D64D8E671BE31B5F00196287 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		D64D8E681BE31CC300196287 /* global.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = global.css; sourceTree = "<group>"; };
+		D64D8E691BE324C500196287 /* circle.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = circle.css; sourceTree = "<group>"; };
+		D64D8E6A1BE324F900196287 /* library.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = library.html; sourceTree = "<group>"; };
+		D64D8E6B1BE426DE00196287 /* index.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
+		D64D8E6C1BE426E900196287 /* library.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = library.css; sourceTree = "<group>"; };
+		D64D8E6D1BE71FD900196287 /* graph.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = graph.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D64D8E571BE3199200196287 = {
+			isa = PBXGroup;
+			children = (
+				D64D8E601BE319CA00196287 /* CSS Files */,
+				D64D8E5F1BE319B200196287 /* Resource Files */,
+				D64D8E5E1BE3199C00196287 /* HTML Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D64D8E5E1BE3199C00196287 /* HTML Files */ = {
+			isa = PBXGroup;
+			children = (
+				D64D8E671BE31B5F00196287 /* index.html */,
+				D64D8E6A1BE324F900196287 /* library.html */,
+				D64D8E6D1BE71FD900196287 /* graph.html */,
+			);
+			name = "HTML Files";
+			sourceTree = "<group>";
+		};
+		D64D8E5F1BE319B200196287 /* Resource Files */ = {
+			isa = PBXGroup;
+			children = (
+				D64D8E631BE31A9600196287 /* Dude.png */,
+				D64D8E641BE31A9600196287 /* Hatcher.png */,
+				D64D8E651BE31A9600196287 /* LawLib.png */,
+				D64D8E661BE31A9600196287 /* Shapiro.png */,
+			);
+			name = "Resource Files";
+			sourceTree = "<group>";
+		};
+		D64D8E601BE319CA00196287 /* CSS Files */ = {
+			isa = PBXGroup;
+			children = (
+				D64D8E691BE324C500196287 /* circle.css */,
+				D64D8E621BE31A7C00196287 /* bootstrap */,
+				D64D8E681BE31CC300196287 /* global.css */,
+				D64D8E6B1BE426DE00196287 /* index.css */,
+				D64D8E6C1BE426E900196287 /* library.css */,
+			);
+			name = "CSS Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		D64D8E581BE3199200196287 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = D64D8E5B1BE3199200196287 /* Build configuration list for PBXProject "StudySpace" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D64D8E571BE3199200196287;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		D64D8E5C1BE3199200196287 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		D64D8E5D1BE3199200196287 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D64D8E5B1BE3199200196287 /* Build configuration list for PBXProject "StudySpace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D64D8E5C1BE3199200196287 /* Debug */,
+				D64D8E5D1BE3199200196287 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D64D8E581BE3199200196287 /* Project object */;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Flot Line Graph</title>
+        
+        <style type="text/css">
+            body { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
+            h1 { width: 450px; margin: 0 auto; font-size: 12px; text-align: center; }
+            #placeholder { width: 450px; height: 200px; position: relative; margin: 0 auto; }
+        </style>
+        
+        <!--[if lte IE 8]><script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/excanvas.min.js"></script><![endif]-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.symbol.min.js"></script>
+        <script type="text/javascript" src="http://raw.github.com/markrcote/flot-axislabels/master/jquery.flot.axislabels.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.time.min.js"></script>
+        
+        <script type="text/javascript">
+
+            var d1 = [[new Date(2015, 11, 1, 2), 12],
+                      [new Date(2015, 11, 1, 4), 15],
+                      [new Date(2015, 11, 1, 6), 30],
+                      [new Date(2015, 11, 1, 8), 37],
+                      [new Date(2015, 11, 1, 10), 53],
+                      [new Date(2015, 11, 1, 12), 72],
+                      [new Date(2015, 11, 1, 14), 79],
+                      [new Date(2015, 11, 1, 16), 61],
+                      [new Date(2015, 11, 1, 18), 43],
+                      [new Date(2015, 11, 1, 20), 32],
+                      [new Date(2015, 11, 1, 22), 20],
+                      ];
+
+            
+            var data1 = [
+                         {label: "Occupancy in %",  data: d1, points: { symbol: "circle", fillColor: "#058DC7" }, color: '#058DC7'}
+                         ];
+                         
+             $(document).ready(function () {
+                $.plot($("#placeholder"), data1, {
+                    xaxis: {
+                        min: (new Date(2015, 11, 1, 0, 0, 0, 0)),
+                        max: (new Date(2015, 11, 2, 0, 0, 0, 0)),
+                        mode: "time",
+                        tickSize: [5, "hour"],
+                        tickLength: 0,
+                        axisLabel: 'Time',
+                        axisLabelUseCanvas: true,
+                        axisLabelFontSizePixels: 12,
+                        axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+                        axisLabelPadding: 5
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 100,
+                        axisLabel: 'Percentage Full',
+                        axisLabelUseCanvas: true,
+                        axisLabelFontSizePixels: 12,
+                        axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+                        axisLabelPadding: 5
+                    },
+                    series: {
+                        lines: { show: true },
+                            points: {
+                                radius: 3,
+                                show: true,
+                                fill: true
+                            },
+                        },
+                    grid: {
+                        hoverable: true,
+                        borderWidth: 1
+                    }
+      
+                });
+                           
+                            
+            });
+            </script>
+    </head>
+    
+    <body>
+        <h1>Averages</h1>
+        <div id="placeholder"></div>
+    </body>
+</html>
