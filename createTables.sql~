@@ -27,7 +27,11 @@ CREATE TABLE Floors (
 	current_occupancy INTEGER,
 	max_occupancy INTEGER,
 	PRIMARY KEY (library_name, floor_name),
+<<<<<<< HEAD
+	FOREIGN KEY (library_name) REFERENCES (Libraries)
+=======
 	FOREIGN KEY (library_name) REFERENCES Libraries(library_name)
+>>>>>>> fe4bbef99f856318ebed6c1af6ca1f2161cbb954
 );
 
 CREATE TABLE Regions (

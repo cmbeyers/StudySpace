@@ -101,11 +101,13 @@ public class sqlDatabase {
       String selectQuery = "";
       ResultSet rst = stmt.executeQuery("");
       for(HourStatPacket hour : hourPackets){
+        //Grab the data you are trying to update
         rst = stmt.executeQuery("select H.fill_average from Hour_Average H where H.library_name =" + hour.libraryName + " and H.floor_name=" + hour.floorName + " and H.hour="+ hour.hourIndex.toString());
         while(rst.next()) {
           Float avg = rst.getFloat(1);
           //Compute the new average factoring in the value
           avg = (float) (avg * (hour.numIntervals - 1) + hour.floorFillPercentage);
+          //Place the value back in the database factoring in this hour
           updateQuery = "Hour_Average hour SET (fill_average) = "+avg+" where H.library_name =" + hour.libraryName + " and H.floor_name=" + hour.floorName + " and H.hour="+ hour.hourIndex.toString();
           stmt.executeQuery(updateQuery);
       }
