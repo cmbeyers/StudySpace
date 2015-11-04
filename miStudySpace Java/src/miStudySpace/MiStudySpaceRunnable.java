@@ -8,18 +8,14 @@ import java.sql.SQLException;
 
 
 
-public class MainFile
+public class MiStudySpaceRunnable
 {
-  public static HomeScreen win;
+  public static BackendUpdate backend;
   public static sqlDatabase db;
 
   public static void main( String[] args ) throws IOException
   {
     db = new sqlDatabase();
-    win = new HomeScreen();
-    win.setMinimumSize(new Dimension(400, 400));
-    //win.pack();
-    win.setVisible(true);
-    win.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    backend = new BackendUpdate();
   }
 }

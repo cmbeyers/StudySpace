@@ -38,16 +38,14 @@ CREATE TABLE Regions (
 	max_occupancy INTEGER,
 	PRIMARY KEY (region_name, floor_name, library_name),
 	FOREIGN KEY (floor_name, library_name) REFERENCES Floors(floor_name, library_name)
-	--FOREIGN KEY (library_name) REFERENCES Libraries(library_name)
 );
 CREATE TABLE Hour_Average (
 	floor_name VARCHAR(40),
 	library_name VARCHAR(40),
 	hour INTEGER, --Hour from 0-23
-	fill_average FLOAT(5), --Precision of 8 numbers, 7 decimal places
+	fill_average FLOAT(5), --Precision of 5
 	PRIMARY KEY (floor_name, library_name, hour),
 	FOREIGN KEY (floor_name, library_name) REFERENCES Floors(floor_name, library_name)
-	--FOREIGN KEY (library_name) REFERENCES Libraries(library_name)
 );
 
 --For updating this, pull the current value, multiply by

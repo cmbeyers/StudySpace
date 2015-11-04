@@ -17,10 +17,10 @@ public class sqlDatabase {
  static String password = "Clayton5"; //replace with your Oracle password
   
  
- String  driverName ="oracle.jdbc.driver.OracleDriver"; // for Oracle
- // String driverName = “com.mysql.jdbc.Driver”; //for MySql
+ //String  driverName ="oracle.jdbc.driver.OracleDriver"; // for Oracle
+ String driverName = "com.mysql.jdbc.Driver"; //for MySql
  String serverName = "localhost"; // Use this server.
- String portNumber = "1521";
+ String portNumber = "3306";
  String sid = "orcl";
  String url="jdbc:oracle:thin:@"+serverName+":"+ portNumber+":"+sid; // for Oracle
   public sqlDatabase() {
