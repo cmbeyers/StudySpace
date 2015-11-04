@@ -20,7 +20,7 @@ CREATE TABLE Floors (
 	current_occupancy INTEGER,
 	max_occupancy INTEGER,
 	PRIMARY KEY (library_name, floor_name),
-	FOREIGN KEY library_name REFERENCES Libraries
+	FOREIGN KEY (library_name) REFERENCES (Libraries)
 );
 
 CREATE TABLE Regions (
