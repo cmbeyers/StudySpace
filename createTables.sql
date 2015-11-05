@@ -1,14 +1,7 @@
---DROP DATABASE if EXISTS miStudySpace;
---CREATE DATABASE miStudySpace;
+-- DROP DATABASE if EXISTS miStudySpace;
+-- CREATE DATABASE miStudySpace;
 
---USE miStudySpace;
-
-CREATE TABLE contains(
-	albID VARCHAR2(100),
-	 phoID VARCHAR2(100),
-	  PRIMARY KEY(albID, phoID),
-	   FOREIGN KEY(albID) REFERENCES albums ON DELETE CASCADE,
-	    FOREIGN KEY(phoID) REFERENCES photos ON DELETE CASCADE);
+USE miStudySpace;
 
 CREATE TABLE Access_Points (
 	ap_name VARCHAR(20) NOT NULL,
@@ -42,15 +35,15 @@ CREATE TABLE Regions (
 CREATE TABLE Hour_Average (
 	floor_name VARCHAR(40),
 	library_name VARCHAR(40),
-	hour INTEGER, --Hour from 0-23
-	fill_average FLOAT(5), --Precision of 5
+	hour INTEGER, -- Hour from 0-23
+	fill_average FLOAT(5), -- Precision of 5
 	PRIMARY KEY (floor_name, library_name, hour),
 	FOREIGN KEY (floor_name, library_name) REFERENCES Floors(floor_name, library_name)
 );
 
---For updating this, pull the current value, multiply by
---How many time intervals have been passed - 1, then add the current level
---Divide by how many time intervals have passed
---Restart interval count after 12 intervals (60 minutes)
---And increment the hour number
+-- For updating this, pull the current value, multiply by
+-- How many time intervals have been passed - 1, then add the current level
+-- Divide by how many time intervals have passed
+-- Restart interval count after 12 intervals (60 minutes)
+-- And increment the hour number
 

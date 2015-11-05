@@ -7,22 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-import javax.swing.JList;
-
 public class sqlDatabase {
 //You must use the following variable as the JDBC connection
- Connection oracleConnection = null;
- static String dataType = "PUBLIC"; 
- static String oracleUserName = "cmbeyers"; //replace with your Oracle account name
- static String password = "Clayton5"; //replace with your Oracle password
-  
- 
- //String  driverName ="oracle.jdbc.driver.OracleDriver"; // for Oracle
- String driverName = "com.mysql.jdbc.Driver"; //for MySql
- String serverName = "localhost"; // Use this server.
- String portNumber = "3306";
- String sid = "orcl";
- String url="jdbc:oracle:thin:@"+serverName+":"+ portNumber+":"+sid; // for Oracle
+ Connection mysqlConnection = null;
   public sqlDatabase() {
     super();
     if(!dbConnector()){
@@ -32,9 +19,9 @@ public class sqlDatabase {
   public boolean dbConnector(){
     try {
       // Load the JDBC driver
-       Class.forName(driverName);
+      Class.forName("com.mysql.jdbc.Driver").newInstance();
       // Create a connection to the database
-      oracleConnection = DriverManager.getConnection(url, oracleUserName, password);
+      mysqlConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/miStudySpace?user=root&password=studyspace441");
   } catch (ClassNotFoundException e) {
       // Could not find the database driver
       System.out.println("ClassNotFoundException : "+e.getMessage());
@@ -43,6 +30,12 @@ public class sqlDatabase {
       // Could not connect to the database
       System.out.println(e.getMessage());
       return false;
+  } catch (InstantiationException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+  } catch (IllegalAccessException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
   }
     return true;
 }
@@ -50,7 +43,7 @@ public class sqlDatabase {
   public void updateRegions(Vector<RegionPacket> regionPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
-        oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
       String updateQuery = "";
       for(RegionPacket reg : regionPackets){
@@ -65,7 +58,7 @@ public class sqlDatabase {
   public void updateFloors(Vector<FloorPacket> floorPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
-        oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
       String updateQuery = "";
       for(FloorPacket flo : floorPackets){
@@ -80,7 +73,7 @@ public class sqlDatabase {
   public void updateLibraries(Vector<LibraryPacket> libraryPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
-        oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
     String updateQuery = "";
     for(LibraryPacket lib : libraryPackets){
@@ -95,7 +88,7 @@ public class sqlDatabase {
   public void updateHourlyStats(Vector<HourStatPacket> hourPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
-        oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
       String updateQuery = "";
       String selectQuery = "";

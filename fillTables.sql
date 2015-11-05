@@ -1,9 +1,11 @@
---Create the libraries
+USE miStudySpace;
+
+-- Create the libraries
 INSERT INTO Libraries(library_name, current_occupancy, max_occupancy)
 VALUES ('Shapiro', 0, 1400);
 
 
---Create the floors
+-- Create the floors
 INSERT INTO Floors(library_name, floor_name, current_occupancy, max_occupancy)
 VALUES ('Shapiro', 'Basement', 0, 219);
 
@@ -61,7 +63,7 @@ VALUES ('Center', 'Fourth', 'Shapiro', 0, 79);
 INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
 VALUES ('South', 'Fourth', 'Shapiro', 0, 75);
 
---Create the hour intervals for shapiro
+-- Create the hour intervals for shapiro
 
 INSERT INTO Hour_Average(library_name, floor_name, hour, fill_average)
 VALUES ('Shapiro', 'Basement', 0, 0.0);
