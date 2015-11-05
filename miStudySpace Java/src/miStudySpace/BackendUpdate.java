@@ -79,6 +79,7 @@ public class BackendUpdate {
     }
     libraryTotal = 0;
     for(String curName : APNames){
+      System.out.println("Access Point:"+curName+" has this many users:"+ statMap.get(curName));
       if(curName.contains("UGLI")){libraryTotal +=statMap.get(curName);}
       if(curName.contains(floorStr)){ floorTotal +=statMap.get(curName);}
       if(curName.contains(floorStr) && curName.contains("-N")){ northTotal +=statMap.get(curName);}
@@ -173,7 +174,11 @@ public class BackendUpdate {
       regionPackets.add(new RegionPacket("Shapiro","Fourth", "Center",centerTotal));
       regionPackets.add(new RegionPacket("Shapiro","Fourth", "South",southTotal));
     }
+    System.out.println("Floor:"+floor+" Floor:"+floorTotal+" North:"+northTotal+" Center:"+centerTotal+" South:"+southTotal);
     }
+    System.out.println("Size of floorPackets: " + floorPackets.size());
+    System.out.println("Size of regionPackets: " + regionPackets.size());
+    System.out.println("Size of libraryPackets: " + libraryPackets.size());
     libraryPackets.addElement(new LibraryPacket("Shapiro", libraryTotal));
     MiStudySpaceRunnable.db.updateFloors(floorPackets);
     MiStudySpaceRunnable.db.updateLibraries(libraryPackets);

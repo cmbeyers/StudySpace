@@ -3,6 +3,12 @@
 
 USE miStudySpace;
 
+DROP TABLE if exists Hour_Average;
+DROP TABLE if exists Regions;
+DROP TABLE if exists Floors;
+DROP Table if exists Libraries;
+DROP Table if exists Access_Points;
+
 CREATE TABLE Access_Points (
 	ap_name VARCHAR(20) NOT NULL,
 	current_clients INTEGER,
@@ -19,8 +25,7 @@ CREATE TABLE Floors (
 	floor_name VARCHAR(40),
 	current_occupancy INTEGER,
 	max_occupancy INTEGER,
-	PRIMARY KEY (library_name, floor_name),
-	FOREIGN KEY (library_name) REFERENCES Libraries(library_name)
+	PRIMARY KEY (library_name, floor_name)
 );
 
 CREATE TABLE Regions (
@@ -29,16 +34,14 @@ CREATE TABLE Regions (
 	library_name VARCHAR(40),
 	current_occupancy INTEGER,
 	max_occupancy INTEGER,
-	PRIMARY KEY (region_name, floor_name, library_name),
-	FOREIGN KEY (floor_name, library_name) REFERENCES Floors(floor_name, library_name)
+	PRIMARY KEY (region_name, floor_name, library_name)
 );
 CREATE TABLE Hour_Average (
 	floor_name VARCHAR(40),
 	library_name VARCHAR(40),
 	hour INTEGER, -- Hour from 0-23
 	fill_average FLOAT(5), -- Precision of 5
-	PRIMARY KEY (floor_name, library_name, hour),
-	FOREIGN KEY (floor_name, library_name) REFERENCES Floors(floor_name, library_name)
+	PRIMARY KEY (floor_name, library_name, hour)
 );
 
 -- For updating this, pull the current value, multiply by

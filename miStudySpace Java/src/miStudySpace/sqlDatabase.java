@@ -47,8 +47,8 @@ public class sqlDatabase {
                  ResultSet.CONCUR_READ_ONLY)) {
       String updateQuery = "";
       for(RegionPacket reg : regionPackets){
-        updateQuery = "UPDATE regions reg SET (current_occupancy) = "+reg.currentOccupancy+" where reg.region_name = "+reg.regionName+" and reg.floor_name = "+reg.floorName+" and reg.library_name = "+reg.libraryName;
-        stmt.executeQuery(updateQuery);
+        updateQuery = "UPDATE Regions reg SET current_occupancy = "+reg.currentOccupancy+" where reg.region_name = '"+reg.regionName+"' and reg.floor_name = '"+reg.floorName+"' and reg.library_name = '"+reg.libraryName+"'";
+        stmt.executeUpdate(updateQuery);
       }
     stmt.close();
     } catch (SQLException err) {
@@ -62,8 +62,8 @@ public class sqlDatabase {
                  ResultSet.CONCUR_READ_ONLY)) {
       String updateQuery = "";
       for(FloorPacket flo : floorPackets){
-        updateQuery = "floors floor SET (current_occupancy) = "+flo.currentOccupancy+" where floor.floor_name = "+flo.floorName+" and floor.library_name = "+flo.libraryName;
-        stmt.executeQuery(updateQuery);
+        updateQuery = "UPDATE Floors floor SET current_occupancy = "+flo.currentOccupancy+" where floor.floor_name = '"+flo.floorName+"' and floor.library_name = '"+flo.libraryName+"'";
+        stmt.executeUpdate(updateQuery);
       }
     stmt.close();
     } catch (SQLException err) {
@@ -77,8 +77,8 @@ public class sqlDatabase {
                  ResultSet.CONCUR_READ_ONLY)) {
     String updateQuery = "";
     for(LibraryPacket lib : libraryPackets){
-      updateQuery = "UPDATE libraries lib SET (current_occupancy) =  "+lib.currentOccupancy+" where lib.library_name = "+lib.libraryName;
-      stmt.executeQuery(updateQuery);
+      updateQuery = "UPDATE Libraries lib SET current_occupancy =  "+lib.currentOccupancy+" where lib.library_name = '"+lib.libraryName+"'";
+      stmt.executeUpdate(updateQuery);
     }
     stmt.close();
     } catch (SQLException err) {
@@ -92,19 +92,21 @@ public class sqlDatabase {
                  ResultSet.CONCUR_READ_ONLY)) {
       String updateQuery = "";
       String selectQuery = "";
-      ResultSet rst = stmt.executeQuery("");
+      ResultSet rst;
+      rst = stmt.executeQuery("select * from Libraries");
       for(HourStatPacket hour : hourPackets){
         //Grab the data you are trying to update
-        rst = stmt.executeQuery("select H.fill_average from Hour_Average H where H.library_name =" + hour.libraryName + " and H.floor_name=" + hour.floorName + " and H.hour="+ hour.hourIndex.toString());
+        rst = stmt.executeQuery("select H.fill_average from Hour_Average H where H.library_name ='" + hour.libraryName + "' and H.floor_name= '" + hour.floorName + "' and H.hour='"+ hour.hourIndex.toString()+"'");
         while(rst.next()) {
           Float avg = rst.getFloat(1);
           //Compute the new average factoring in the value
           avg = (float) (avg * (hour.numIntervals - 1) + hour.floorFillPercentage);
           //Place the value back in the database factoring in this hour
-          updateQuery = "Hour_Average hour SET (fill_average) = "+avg+" where H.library_name =" + hour.libraryName + " and H.floor_name=" + hour.floorName + " and H.hour="+ hour.hourIndex.toString();
-          stmt.executeQuery(updateQuery);
+          updateQuery = "UPDATE Hour_Average H SET fill_average = "+avg+" where H.library_name ='" + hour.libraryName + "' and H.floor_name='" + hour.floorName + "' and H.hour='"+ hour.hourIndex.toString()+"'";
+          stmt.executeUpdate(updateQuery);
       }
       }
+      rst.close();
     stmt.close();
     } catch (SQLException err) {
     System.err.println(err.getMessage());
