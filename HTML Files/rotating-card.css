@@ -2,7 +2,7 @@ body {
 	margin-top: 0px;
 	font-size: 14px;
 	font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
-	background-color: #E5E9ED;
+	background-color: #50597b;
 }
 .btn:hover,
 .btn:focus,
@@ -178,7 +178,7 @@ body {
 /*      Just for presentation        */
 
 .title{
-    color: #506A85;
+    color: #E5E9ED;/*506A85*/
     text-align: center;
     font-weight: 300;
     font-size: 40px;
