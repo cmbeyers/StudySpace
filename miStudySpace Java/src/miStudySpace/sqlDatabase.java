@@ -7,22 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-import javax.swing.JList;
-
 public class sqlDatabase {
 //You must use the following variable as the JDBC connection
- Connection oracleConnection = null;
- static String dataType = "PUBLIC"; 
- static String oracleUserName = "cmbeyers"; //replace with your Oracle account name
- static String password = "Clayton5"; //replace with your Oracle password
-  
- 
- String  driverName ="oracle.jdbc.driver.OracleDriver"; // for Oracle
- // String driverName = “com.mysql.jdbc.Driver”; //for MySql
- String serverName = "localhost"; // Use this server.
- String portNumber = "1521";
- String sid = "orcl";
- String url="jdbc:oracle:thin:@"+serverName+":"+ portNumber+":"+sid; // for Oracle
+ Connection mysqlConnection = null;
   public sqlDatabase() {
     super();
     if(!dbConnector()){
@@ -32,9 +19,9 @@ public class sqlDatabase {
   public boolean dbConnector(){
     try {
       // Load the JDBC driver
-       Class.forName(driverName);
+      Class.forName("com.mysql.jdbc.Driver").newInstance();
       // Create a connection to the database
-      oracleConnection = DriverManager.getConnection(url, oracleUserName, password);
+      mysqlConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/miStudySpace?user=root&password=studyspace441");
   } catch (ClassNotFoundException e) {
       // Could not find the database driver
       System.out.println("ClassNotFoundException : "+e.getMessage());
@@ -43,6 +30,12 @@ public class sqlDatabase {
       // Could not connect to the database
       System.out.println(e.getMessage());
       return false;
+  } catch (InstantiationException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+  } catch (IllegalAccessException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
   }
     return true;
 }
@@ -50,12 +43,12 @@ public class sqlDatabase {
   public void updateRegions(Vector<RegionPacket> regionPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
-        oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
       String updateQuery = "";
       for(RegionPacket reg : regionPackets){
-        updateQuery = "UPDATE regions reg SET (current_occupancy) = "+reg.currentOccupancy+" where reg.region_name = "+reg.regionName+" and reg.floor_name = "+reg.floorName+" and reg.library_name = "+reg.libraryName;
-        stmt.executeQuery(updateQuery);
+        updateQuery = "UPDATE Regions reg SET current_occupancy = "+reg.currentOccupancy+" where reg.region_name = '"+reg.regionName+"' and reg.floor_name = '"+reg.floorName+"' and reg.library_name = '"+reg.libraryName+"'";
+        stmt.executeUpdate(updateQuery);
       }
     stmt.close();
     } catch (SQLException err) {
@@ -65,12 +58,12 @@ public class sqlDatabase {
   public void updateFloors(Vector<FloorPacket> floorPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
-        oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
       String updateQuery = "";
       for(FloorPacket flo : floorPackets){
-        updateQuery = "floors floor SET (current_occupancy) = "+flo.currentOccupancy+" where floor.floor_name = "+flo.floorName+" and floor.library_name = "+flo.libraryName;
-        stmt.executeQuery(updateQuery);
+        updateQuery = "UPDATE Floors floor SET current_occupancy = "+flo.currentOccupancy+" where floor.floor_name = '"+flo.floorName+"' and floor.library_name = '"+flo.libraryName+"'";
+        stmt.executeUpdate(updateQuery);
       }
     stmt.close();
     } catch (SQLException err) {
@@ -80,12 +73,12 @@ public class sqlDatabase {
   public void updateLibraries(Vector<LibraryPacket> libraryPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
-        oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
     String updateQuery = "";
     for(LibraryPacket lib : libraryPackets){
-      updateQuery = "UPDATE libraries lib SET (current_occupancy) =  "+lib.currentOccupancy+" where lib.library_name = "+lib.libraryName;
-      stmt.executeQuery(updateQuery);
+      updateQuery = "UPDATE Libraries lib SET current_occupancy =  "+lib.currentOccupancy+" where lib.library_name = '"+lib.libraryName+"'";
+      stmt.executeUpdate(updateQuery);
     }
     stmt.close();
     } catch (SQLException err) {
@@ -95,23 +88,29 @@ public class sqlDatabase {
   public void updateHourlyStats(Vector<HourStatPacket> hourPackets) {
     // Find the following information from your database and store the information as shown 
     try (Statement stmt = 
-        oracleConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
+      Statement stmt2 = 
+          mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                   ResultSet.CONCUR_READ_ONLY);
       String updateQuery = "";
       String selectQuery = "";
-      ResultSet rst = stmt.executeQuery("");
+      ResultSet rst;
+      rst = stmt.executeQuery("select * from Libraries");
       for(HourStatPacket hour : hourPackets){
         //Grab the data you are trying to update
-        rst = stmt.executeQuery("select H.fill_average from Hour_Average H where H.library_name =" + hour.libraryName + " and H.floor_name=" + hour.floorName + " and H.hour="+ hour.hourIndex.toString());
+        rst = stmt.executeQuery("select H.fill_average from Hour_Average H where H.library_name ='" + hour.libraryName + "' and H.floor_name= '" + hour.floorName + "' and H.hour='"+ hour.hourIndex.toString()+"'");
         while(rst.next()) {
           Float avg = rst.getFloat(1);
           //Compute the new average factoring in the value
-          avg = (float) (avg * (hour.numIntervals - 1) + hour.floorFillPercentage);
+          avg = (float) ((avg * (hour.numIntervals - 1) + hour.floorFillPercentage)/hour.numIntervals);
           //Place the value back in the database factoring in this hour
-          updateQuery = "Hour_Average hour SET (fill_average) = "+avg+" where H.library_name =" + hour.libraryName + " and H.floor_name=" + hour.floorName + " and H.hour="+ hour.hourIndex.toString();
-          stmt.executeQuery(updateQuery);
+          updateQuery = "UPDATE Hour_Average H SET fill_average = "+avg+" where H.library_name ='" + hour.libraryName + "' and H.floor_name='" + hour.floorName + "' and H.hour='"+ hour.hourIndex.toString()+"'";
+          stmt2.executeUpdate(updateQuery);
       }
       }
+      rst.close();
+    stmt.close();
     stmt.close();
     } catch (SQLException err) {
     System.err.println(err.getMessage());
