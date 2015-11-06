@@ -1,0 +1,80 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		D60604A61BED21E200FCE0E4 /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; path = app; sourceTree = "<group>"; };
+		D60604A71BED21E200FCE0E4 /* config.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = config.py; sourceTree = "<group>"; };
+		D60604A81BED21E200FCE0E4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D60604A91BED21E200FCE0E4 /* requirements.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = requirements.txt; sourceTree = "<group>"; };
+		D60604AA1BED21E200FCE0E4 /* run.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = run.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D606049F1BED217500FCE0E4 = {
+			isa = PBXGroup;
+			children = (
+				D60604A61BED21E200FCE0E4 /* app */,
+				D60604A71BED21E200FCE0E4 /* config.py */,
+				D60604A81BED21E200FCE0E4 /* README.md */,
+				D60604A91BED21E200FCE0E4 /* requirements.txt */,
+				D60604AA1BED21E200FCE0E4 /* run.py */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		D60604A01BED217500FCE0E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = D60604A31BED217500FCE0E4 /* Build configuration list for PBXProject "StudySpace" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D606049F1BED217500FCE0E4;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		D60604A41BED217500FCE0E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		D60604A51BED217500FCE0E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D60604A31BED217500FCE0E4 /* Build configuration list for PBXProject "StudySpace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D60604A41BED217500FCE0E4 /* Debug */,
+				D60604A51BED217500FCE0E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D60604A01BED217500FCE0E4 /* Project object */;
+}
