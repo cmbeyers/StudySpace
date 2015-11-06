@@ -60,131 +60,127 @@ public class BackendUpdate {
     hourStatPackets = new Vector<HourStatPacket>();
     //System.out.println("Getting Stats for Floor:" + floor);
     String floorStr = null;
-    floorTotal = northTotal = southTotal = centerTotal = 0;
     for(Integer floor = 0; floor < 5; floor++){
-    if(floor == 0){
-      floorStr = "-B";
-    }
-    if(floor == 1){
-      floorStr = "-1";
-    }
-    if(floor == 2){
-      floorStr = "-2";
-    }
-    if(floor == 3){
-      floorStr = "-3";
-    }
-    if(floor == 4){
-      floorStr = "-4";
-    }
-    libraryTotal = 0;
-    for(String curName : APNames){
-      System.out.println("Access Point:"+curName+" has this many users:"+ statMap.get(curName));
-      if(curName.contains("UGLI")){libraryTotal +=statMap.get(curName);}
-      if(curName.contains(floorStr)){ floorTotal +=statMap.get(curName);}
-      if(curName.contains(floorStr) && curName.contains("-N")){ northTotal +=statMap.get(curName);}
-      else if(curName.contains(floorStr) && curName.contains("-S")){ southTotal +=statMap.get(curName);}
-      else if(curName.contains(floorStr) && curName.contains("-C")){ centerTotal +=statMap.get(curName);}
-      ////////Special Cases
-      if(floor == 0){ ///Basement Cases
-        if(curName.contains("B174")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("B136")){ centerTotal +=statMap.get(curName);}
+      floorTotal = northTotal = southTotal = centerTotal = 0;
+      if(floor == 0){
+        floorStr = "-B";
       }
-      else if(floor == 1){ //First Floor
-        if(curName.contains("1152")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("1136")){ centerTotal +=statMap.get(curName);}
-        else if(curName.contains("1024")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("1098")){ southTotal +=statMap.get(curName);}
+      if(floor == 1){
+        floorStr = "-1";
       }
-      else if(floor == 2){ //Second Floor
-        if(curName.contains("2024")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("2178")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("2026")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("2160")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("2142")){ centerTotal +=statMap.get(curName);}
-        else if(curName.contains("2054")){ centerTotal +=statMap.get(curName);}
-        else if(curName.contains("2124")){ southTotal +=statMap.get(curName);}
+      if(floor == 2){
+        floorStr = "-2";
       }
-      else if(floor == 3){ //Second Floor
-        if(curName.contains("3C14")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("3002")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("3026C-H")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("3162")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("3076-H")){ southTotal +=statMap.get(curName);}
+      if(floor == 3){
+        floorStr = "-3";
       }
-      else if(floor == 4){ //Second Floor
-        if(curName.contains("4000")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("4190")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("4008")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("4016")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("4172")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("4050")){ northTotal +=statMap.get(curName);}
-        else if(curName.contains("4059-H")){ centerTotal +=statMap.get(curName);}
-        else if(curName.contains("4100-W")){ southTotal +=statMap.get(curName);}
-        else if(curName.contains("4100-E")){ southTotal +=statMap.get(curName);}
+      if(floor == 4){
+        floorStr = "-4";
       }
-      //End of Special Cases
-    }
-    if(floor == 0){
-      southTotal+=20; //Adds 20 to account for computers
-      floorTotal+=20;
-    }
-    if(floor == 3){
-      if(southTotal > 32){
-        floorTotal-=30;
-        southTotal-=30;
+      libraryTotal = 0;
+      for(String curName : APNames){
+        if(curName.contains("UGLI")){libraryTotal +=statMap.get(curName);}
+        if(curName.contains(floorStr)){ floorTotal +=statMap.get(curName);}
+        if(curName.contains(floorStr) && curName.contains("-N")){ northTotal +=statMap.get(curName);}
+        else if(curName.contains(floorStr) && curName.contains("-S")){ southTotal +=statMap.get(curName);}
+        else if(curName.contains(floorStr) && curName.contains("-C")){ centerTotal +=statMap.get(curName);}
+        ////////Special Cases
+        if(floor == 0){ ///Basement Cases
+          if(curName.contains("B174")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("B136")){ centerTotal +=statMap.get(curName);}
+        }
+        else if(floor == 1){ //First Floor
+          if(curName.contains("1152")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("1136")){ centerTotal +=statMap.get(curName);}
+          else if(curName.contains("1024")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("1098")){ southTotal +=statMap.get(curName);}
+        }
+        else if(floor == 2){ //Second Floor
+          if(curName.contains("2024")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("2178")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("2026")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("2160")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("2142")){ centerTotal +=statMap.get(curName);}
+          else if(curName.contains("2054")){ centerTotal +=statMap.get(curName);}
+          else if(curName.contains("2124")){ southTotal +=statMap.get(curName);}
+        }
+        else if(floor == 3){ //Second Floor
+          if(curName.contains("3C14")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("3002")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("3026C-H")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("3162")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("3076-H")){ southTotal +=statMap.get(curName);}
+        }
+        else if(floor == 4){ //Second Floor
+          if(curName.contains("4000")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("4190")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("4008")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("4016")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("4172")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("4050")){ northTotal +=statMap.get(curName);}
+          else if(curName.contains("4059-H")){ centerTotal +=statMap.get(curName);}
+          else if(curName.contains("4100-W")){ southTotal +=statMap.get(curName);}
+          else if(curName.contains("4100-E")){ southTotal +=statMap.get(curName);}
+        }
+        //End of Special Cases
       }
-      if(northTotal > 42){
-        floorTotal-=40;
-        northTotal-=40;
+      if(floor == 0){
+        southTotal+=20; //Adds 20 to account for computers
+        floorTotal+=20;
       }
+      if(floor == 3){
+        if(southTotal > 32){
+          floorTotal-=30;
+          southTotal-=30;
+        }
+        if(northTotal > 42){
+          floorTotal-=40;
+          northTotal-=40;
+        }
+      }
+      ///SET UP THE SQL PACKETS
+      if(floor == 0){
+        floorPackets.add(new FloorPacket("Shapiro","Basement",floorTotal));
+        hourStatPackets.add(new HourStatPacket("Shapiro","Basement", floorTotal/219.0, hourIndex,numIntervalsThisHour));
+        regionPackets.add(new RegionPacket("Shapiro","Basement", "North",northTotal));
+        regionPackets.add(new RegionPacket("Shapiro","Basement", "Center",centerTotal));
+        regionPackets.add(new RegionPacket("Shapiro","Basement", "South",southTotal));
+      }
+      else if(floor == 1){
+        floorPackets.add(new FloorPacket("Shapiro","First",floorTotal));
+        hourStatPackets.add(new HourStatPacket("Shapiro","First",floorTotal/404.0, hourIndex,numIntervalsThisHour));
+        regionPackets.add(new RegionPacket("Shapiro","First", "North",northTotal));
+        regionPackets.add(new RegionPacket("Shapiro","First", "Center",centerTotal));
+        regionPackets.add(new RegionPacket("Shapiro","First", "South",southTotal));
+      }
+      else if(floor == 2){
+        floorPackets.add(new FloorPacket("Shapiro","Second",floorTotal));
+        hourStatPackets.add(new HourStatPacket("Shapiro","Second",floorTotal/342.0, hourIndex,numIntervalsThisHour));
+        regionPackets.add(new RegionPacket("Shapiro","Second", "North",northTotal));
+        regionPackets.add(new RegionPacket("Shapiro","Second", "Center",centerTotal));
+        regionPackets.add(new RegionPacket("Shapiro","Second", "South",southTotal));
+      }
+      else if(floor == 3){
+        floorPackets.add(new FloorPacket("Shapiro","Third",floorTotal));
+        hourStatPackets.add(new HourStatPacket("Shapiro","Third",floorTotal/206.0, hourIndex,numIntervalsThisHour));
+        regionPackets.add(new RegionPacket("Shapiro","Third", "North",northTotal));
+        regionPackets.add(new RegionPacket("Shapiro","Third", "South",southTotal));
+      }
+      if(floor == 4){
+        floorPackets.add(new FloorPacket("Shapiro","Fourth",floorTotal));
+        hourStatPackets.add(new HourStatPacket("Shapiro","Fourth",floorTotal/228.0, hourIndex,numIntervalsThisHour));
+        regionPackets.add(new RegionPacket("Shapiro","Fourth", "North",northTotal));
+        regionPackets.add(new RegionPacket("Shapiro","Fourth", "Center",centerTotal));
+        regionPackets.add(new RegionPacket("Shapiro","Fourth", "South",southTotal));
+      }
+      System.out.println("Floor:"+floor+" Floor:"+floorTotal+" North:"+northTotal+" Center:"+centerTotal+" South:"+southTotal);
     }
-    ///SET UP THE SQL PACKETS
-    if(floor == 0){
-      floorPackets.add(new FloorPacket("Shapiro","Basement",floorTotal));
-      hourStatPackets.add(new HourStatPacket("Shapiro","Basement", floorTotal/219.0, hourIndex,numIntervalsThisHour));
-      regionPackets.add(new RegionPacket("Shapiro","Basement", "North",northTotal));
-      regionPackets.add(new RegionPacket("Shapiro","Basement", "Center",centerTotal));
-      regionPackets.add(new RegionPacket("Shapiro","Basement", "South",southTotal));
-    }
-    else if(floor == 1){
-      floorPackets.add(new FloorPacket("Shapiro","First",floorTotal));
-      hourStatPackets.add(new HourStatPacket("Shapiro","First",floorTotal/404.0, hourIndex,numIntervalsThisHour));
-      regionPackets.add(new RegionPacket("Shapiro","First", "North",northTotal));
-      regionPackets.add(new RegionPacket("Shapiro","First", "Center",centerTotal));
-      regionPackets.add(new RegionPacket("Shapiro","First", "South",southTotal));
-    }
-    else if(floor == 2){
-      floorPackets.add(new FloorPacket("Shapiro","Second",floorTotal));
-      hourStatPackets.add(new HourStatPacket("Shapiro","Second",floorTotal/342.0, hourIndex,numIntervalsThisHour));
-      regionPackets.add(new RegionPacket("Shapiro","Second", "North",northTotal));
-      regionPackets.add(new RegionPacket("Shapiro","Second", "Center",centerTotal));
-      regionPackets.add(new RegionPacket("Shapiro","Second", "South",southTotal));
-    }
-    else if(floor == 3){
-      floorPackets.add(new FloorPacket("Shapiro","Third",floorTotal));
-      hourStatPackets.add(new HourStatPacket("Shapiro","Third",floorTotal/206.0, hourIndex,numIntervalsThisHour));
-      regionPackets.add(new RegionPacket("Shapiro","Third", "North",northTotal));
-      regionPackets.add(new RegionPacket("Shapiro","Third", "South",southTotal));
-    }
-    if(floor == 4){
-      floorPackets.add(new FloorPacket("Shapiro","Fourth",floorTotal));
-      hourStatPackets.add(new HourStatPacket("Shapiro","Fourth",floorTotal/228.0, hourIndex,numIntervalsThisHour));
-      regionPackets.add(new RegionPacket("Shapiro","Fourth", "North",northTotal));
-      regionPackets.add(new RegionPacket("Shapiro","Fourth", "Center",centerTotal));
-      regionPackets.add(new RegionPacket("Shapiro","Fourth", "South",southTotal));
-    }
-    System.out.println("Floor:"+floor+" Floor:"+floorTotal+" North:"+northTotal+" Center:"+centerTotal+" South:"+southTotal);
-    }
-    System.out.println("Size of floorPackets: " + floorPackets.size());
-    System.out.println("Size of regionPackets: " + regionPackets.size());
-    System.out.println("Size of libraryPackets: " + libraryPackets.size());
     libraryPackets.addElement(new LibraryPacket("Shapiro", libraryTotal));
     MiStudySpaceRunnable.db.updateFloors(floorPackets);
     MiStudySpaceRunnable.db.updateLibraries(libraryPackets);
     MiStudySpaceRunnable.db.updateRegions(regionPackets);
     MiStudySpaceRunnable.db.updateHourlyStats(hourStatPackets);
-    
+
   }
   public void getData(File inFile){
     

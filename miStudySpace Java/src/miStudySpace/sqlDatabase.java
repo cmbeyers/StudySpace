@@ -90,6 +90,9 @@ public class sqlDatabase {
     try (Statement stmt = 
         mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                  ResultSet.CONCUR_READ_ONLY)) {
+      Statement stmt2 = 
+          mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                   ResultSet.CONCUR_READ_ONLY);
       String updateQuery = "";
       String selectQuery = "";
       ResultSet rst;
@@ -100,13 +103,14 @@ public class sqlDatabase {
         while(rst.next()) {
           Float avg = rst.getFloat(1);
           //Compute the new average factoring in the value
-          avg = (float) (avg * (hour.numIntervals - 1) + hour.floorFillPercentage);
+          avg = (float) ((avg * (hour.numIntervals - 1) + hour.floorFillPercentage)/hour.numIntervals);
           //Place the value back in the database factoring in this hour
           updateQuery = "UPDATE Hour_Average H SET fill_average = "+avg+" where H.library_name ='" + hour.libraryName + "' and H.floor_name='" + hour.floorName + "' and H.hour='"+ hour.hourIndex.toString()+"'";
-          stmt.executeUpdate(updateQuery);
+          stmt2.executeUpdate(updateQuery);
       }
       }
       rst.close();
+    stmt.close();
     stmt.close();
     } catch (SQLException err) {
     System.err.println(err.getMessage());

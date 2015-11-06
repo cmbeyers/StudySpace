@@ -130,10 +130,10 @@ public class MailReader
             //curMessage = messages[0];
             System.out.println("Getting Attachment Of Email with subject : " + messages[messages.length - 1].getSubject());
             curAttachment = getAttachment(messages[messages.length - 1]);
-            for(Message x : messages){
-              System.out.println("Mail Subject: " + x.getSubject());
-              x.setFlag(Flags.Flag.DELETED, true);
-            }
+            //for(Message x : messages){
+            //  System.out.println("Mail Subject: " + x.getSubject());
+            //  x.setFlag(Flags.Flag.DELETED, true);
+            //}
             inbox.close(true);
             store.close();
             return true;
