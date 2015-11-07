@@ -9,8 +9,7 @@ app.config.from_object('config')
 
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_HOST'] = 'localhost'
-#app.config['MYSQL_USER'] = 'group112'
-#app.config['MYSQL_PASSWORD'] = 'eecs'
+
 
 mysql.init_app(app)
 

@@ -36,8 +36,8 @@
         <div class="row  ">
             <div class="container-fluid">
                 <div class="col-xs-12  text-center" style="padding-left: 45%">
-                    <div class="c100 p75 turquois " >
-                        <span>75%</span>
+                    <div class="c100 p{{ libraryOccupancy }} turquois " >
+                        <span>{{ libraryOccupancy }}%</span>
                         <div class="slice">
                             <div class="bar"></div>
                             <div class="fill"></div>
@@ -47,41 +47,22 @@
             </div>
         </div>
         <div class="row floors">
-            <div class="container-fluid">
+            <div class="container">
                 <div class-"col-xs-12">
                     <h2>Floors</h2>
                 </div>
-                <div class="col-xs-4 text-center">
-                    <div class="c100 p75 pink small">
-                        <span>75%</span>
+                {% for floorName, floorOccupancy in floorInfo %}
+                <div class="col-xs-4 text-center floor-col">
+                    <div class="c100 p{{ floorOccupancy }} pink small">
+                        <span>{{ floorOccupancy }}%</span>
                         <div class="slice">
                             <div class="bar"></div>
                             <div class="fill"></div>
                         </div>
                     </div>
-                    <p>Floor 1 </p>
+                    <p>{{ floorName }} </p>
                 </div>
-                <div class="col-xs-4 text-center">
-                    <div class="c100 p25 pink small">
-                        <span>25%</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <p>Floor 2 </p>
-                </div>
-                <div class="col-xs-4 text-center">
-                    <div class="c100 p35 pink small">
-                        <span>35%</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <p>Floor 3 </p>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
         <div class="row averages">
