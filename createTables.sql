@@ -23,6 +23,7 @@ CREATE TABLE Libraries (
 CREATE TABLE Floors (
 	library_name VARCHAR(40) NOT NULL,
 	floor_name VARCHAR(40),
+	floor_index INTEGER,
 	current_occupancy INTEGER,
 	max_occupancy INTEGER,
 	PRIMARY KEY (library_name, floor_name)
@@ -32,6 +33,7 @@ CREATE TABLE Regions (
 	region_name VARCHAR(40) NOT NULL,
 	floor_name VARCHAR(40),
 	library_name VARCHAR(40),
+	region_index INTEGER,
 	current_occupancy INTEGER,
 	max_occupancy INTEGER,
 	PRIMARY KEY (region_name, floor_name, library_name)
@@ -43,6 +45,13 @@ CREATE TABLE Hour_Average (
 	fill_average FLOAT(5), -- Precision of 5
 	PRIMARY KEY (floor_name, library_name, hour)
 );
+CREATE TABLE Library_Hour_Average (
+	library_name VARCHAR(40) NOT NULL,
+	hour INTEGER, -- Hour from 0-23
+	fill_average FLOAT(5), -- Precision of 5
+	PRIMARY KEY (library_name, hour)
+);
+
 
 -- For updating this, pull the current value, multiply by
 -- How many time intervals have been passed - 1, then add the current level

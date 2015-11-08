@@ -6,62 +6,62 @@ VALUES ('Shapiro', 0, 1400);
 
 
 -- Create the floors
-INSERT INTO Floors(library_name, floor_name, current_occupancy, max_occupancy)
-VALUES ('Shapiro', 'Basement', 0, 219);
+INSERT INTO Floors(library_name, floor_name, floor_index, current_occupancy, max_occupancy)
+VALUES ('Shapiro', 'Basement',0, 0, 219);
 
-INSERT INTO Floors(library_name, floor_name, current_occupancy, max_occupancy)
-VALUES ('Shapiro', 'First', 0, 404);
+INSERT INTO Floors(library_name, floor_name, floor_index, current_occupancy, max_occupancy)
+VALUES ('Shapiro', 'First',1, 0, 404);
 
-INSERT INTO Floors(library_name, floor_name, current_occupancy, max_occupancy)
-VALUES ('Shapiro', 'Second', 0, 342);
+INSERT INTO Floors(library_name, floor_name, floor_index, current_occupancy, max_occupancy)
+VALUES ('Shapiro', 'Second',2, 0, 342);
 
-INSERT INTO Floors(library_name, floor_name, current_occupancy, max_occupancy)
-VALUES ('Shapiro', 'Third', 0, 206);
+INSERT INTO Floors(library_name, floor_name, floor_index, current_occupancy, max_occupancy)
+VALUES ('Shapiro', 'Third',3, 0, 206);
 
-INSERT INTO Floors(library_name, floor_name, current_occupancy, max_occupancy)
-VALUES ('Shapiro', 'Fourth', 0, 228);
+INSERT INTO Floors(library_name, floor_name, floor_index, current_occupancy, max_occupancy)
+VALUES ('Shapiro', 'Fourth',4, 0, 228);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('North', 'Basement', 'Shapiro', 0, 59);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('North', 'Basement', 'Shapiro',0, 0, 59);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('Center', 'Basement', 'Shapiro', 0, 110);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('Center', 'Basement', 'Shapiro', 1, 0, 110);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('South', 'Basement', 'Shapiro', 0, 49);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('South', 'Basement', 'Shapiro',2, 0, 49);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('North', 'First', 'Shapiro', 0, 156);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('North', 'First', 'Shapiro',0, 0, 156);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('Center', 'First', 'Shapiro', 0, 158);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('Center', 'First', 'Shapiro',1, 0, 158);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('South', 'First', 'Shapiro', 0, 90);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('South', 'First', 'Shapiro',2, 0, 90);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('North', 'Second', 'Shapiro', 0, 79);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('North', 'Second', 'Shapiro',0, 0, 79);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('Center', 'Second', 'Shapiro', 0, 138);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('Center', 'Second', 'Shapiro',1, 0, 138);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('South', 'Second', 'Shapiro', 0, 125);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('South', 'Second', 'Shapiro',2, 0, 125);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('North', 'Third', 'Shapiro', 0, 139);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('North', 'Third', 'Shapiro',0, 0, 139);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('South', 'Third', 'Shapiro', 0, 67);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('South', 'Third', 'Shapiro',1, 0, 67);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('North', 'Fourth', 'Shapiro', 0, 74);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('North', 'Fourth', 'Shapiro',0, 0, 74);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('Center', 'Fourth', 'Shapiro', 0, 79);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('Center', 'Fourth', 'Shapiro',1, 0, 79);
 
-INSERT INTO Regions(region_name, floor_name, library_name, current_occupancy, max_occupancy)
-VALUES ('South', 'Fourth', 'Shapiro', 0, 75);
+INSERT INTO Regions(region_name, floor_name, library_name, region_index, current_occupancy, max_occupancy)
+VALUES ('South', 'Fourth', 'Shapiro',2, 0, 75);
 
 -- Create the hour intervals for shapiro
 
@@ -424,3 +424,77 @@ VALUES ('Shapiro', 'Fourth', 22, 0.0);
 
 INSERT INTO Hour_Average(library_name, floor_name, hour, fill_average)
 VALUES ('Shapiro', 'Fourth', 23, 0.0);
+
+-- Fill Library Hour Averages
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 0, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 1, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 2, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 3, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 4, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 5, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 6, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro',7, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 8, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 9, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 10, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 11, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 12, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 13, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro',14, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 15, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 16, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 17, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 18, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 19, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 20, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 21, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 22, 0.0);
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
+VALUES ('Shapiro', 23, 0.0);
