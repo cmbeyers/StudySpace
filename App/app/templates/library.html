@@ -107,20 +107,16 @@
 
     <script type="text/javascript">
     
-        var d1 = [[new Date(2015, 11, 1, 2), 12],
-              [new Date(2015, 11, 1, 4), 15],
-              [new Date(2015, 11, 1, 6), 30],
-              [new Date(2015, 11, 1, 8), 37],
-              [new Date(2015, 11, 1, 10), 53],
-              [new Date(2015, 11, 1, 12), 72],
-              [new Date(2015, 11, 1, 14), 79],
-              [new Date(2015, 11, 1, 16), 61],
-              [new Date(2015, 11, 1, 18), 43],
-              [new Date(2015, 11, 1, 20), 32],
-              [new Date(2015, 11, 1, 22), 20],
-            ];
+       /* var d1 = [[2, 12],
+              [4, 15],
+              [6, 30],
+              [8, 37],
+              [10, 53]
+            ];*/
           
-          
+        var d1 = {{ averageInfo|tojson|safe }};
+
+        
         var data1 = [
             {label: "Occupancy in %",  data: d1, points: { symbol: "circle", fillColor: "white" }, color: 'white'}
         ];
@@ -128,10 +124,9 @@
         $(document).ready(function () {
             $.plot($("#placeholder"), data1, {
                 xaxis: {
-                    min: (new Date(2015, 11, 1, 0, 0, 0, 0)),
-                    max: (new Date(2015, 11, 2, 0, 0, 0, 0)),
-                    mode: "time",
-                    tickSize: [5, "hour"],
+                    min: 0,
+                    max: 23,
+                    tickSize: 2,
                     tickLength: 0,
                     axisLabel: 'Time',
                     axisLabelUseCanvas: true,

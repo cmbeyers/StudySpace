@@ -26,23 +26,41 @@ def library():
     #Library Occupancy
     cur.execute("SELECT * FROM miStudySpace.Libraries WHERE library_name=%s", {str(libName)})
     libraryInfo = cur.fetchall()
-    libraryOccupancy = int((libraryInfo[0][1]/libraryInfo[0][2])*100)
-    print libraryOccupancy
+    libraryOccupancy = int(round((libraryInfo[0][1]/libraryInfo[0][2])*100))
+    
 
     #Floors Occupancy
-    cur.execute("SELECT * FROM miStudySpace.Floors WHERE library_name=%s", {str(libName)})
+    cur.execute("SELECT * FROM miStudySpace.Floors WHERE library_name=%s ORDER BY floor_index ASC", {str(libName)})
     floorName = []
     floorOccupancy = []
     entries = cur.fetchall()
     for entry in entries:
         floorName.append(entry[1])
-        floorOccupancy.append(int((entry[2]/entry[3])*100))
+        floorOccupancy.append(int(round((entry[3]/entry[4])*100)))
     floorInfo=zip(floorName, floorOccupancy)
 
 
+    #Averages
+    cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s ORDER BY hour ASC", {str(libName)})
+    entries = cur.fetchall();
+    hour = []
+    fillAverage = []
+    for entry in entries:
+        print entry[1]
+        hour.append(entry[1])
+        fillAverage.append(entry[2]*100)
+    averageInfo = zip(hour, fillAverage)
+    print averageInfo
 
     if libraryInfo:
-        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo)
+        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo)
 
     else:
         return render_template('404.html')
+
+
+
+
+
+
+
