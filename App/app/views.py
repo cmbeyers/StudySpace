@@ -45,11 +45,13 @@ def library():
     entries = cur.fetchall();
     hour = []
     fillAverage = []
+    label = []
     for entry in entries:
         print entry[1]
         hour.append(entry[1])
         fillAverage.append(entry[2]*100)
-    averageInfo = zip(hour, fillAverage)
+        label.append(str(entry[2]*100)+"%")
+    averageInfo = zip(hour, fillAverage, label)
     print averageInfo
 
     if libraryInfo:
