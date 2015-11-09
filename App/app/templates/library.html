@@ -50,7 +50,11 @@
                     </ol>
                 <div class="carousel-inner" role="listbox">
                     {% for floorName, floorOccupancy in floorInfo %}
-                    <div class="item">
+                    {% if loop.first %}
+                        <div class="item active">
+                    {% else %}
+                        <div class="item">
+                    {% endif %}
                         <p>{{ floorName }} </p>
                         <div class="c100 p{{ floorOccupancy }} pink small center">
                             <span>{{ floorOccupancy }}%</span>
