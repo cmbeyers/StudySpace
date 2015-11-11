@@ -1,0 +1,51 @@
+.floor-titles{
+    height: 45px;
+    visibility:hidden;
+}
+
+.averages{
+    background-color: #11A8AB;
+}
+
+body {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    overflow-x:hidden;
+}
+
+h1 {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: center;
+}
+
+h2{
+    font-size: 18px;
+}
+
+#placeholder {
+    width: 90%px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+    background-color: #11A8AB;
+}
+
+
+.slideContainer {
+    overflow-x: scroll;
+    white-space: nowrap;
+    background-color:#1f253d;
+    height:190px;
+}
+
+.slide {
+    display: inline-block;
+    width: 35%;
+    white-space: normal;
+}
+
+img{
+    padding-bottom:30px;
+}

@@ -111,7 +111,38 @@ public class sqlDatabase {
       }
       rst.close();
     stmt.close();
+    stmt2.close();
+    } catch (SQLException err) {
+    System.err.println(err.getMessage());
+      }
+  }
+  public void updateLibraryHourlyStats(Vector<HourStatPacket> hourPackets) {
+    // Find the following information from your database and store the information as shown 
+    try (Statement stmt = 
+        mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                 ResultSet.CONCUR_READ_ONLY)) {
+      Statement stmt2 = 
+          mysqlConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                   ResultSet.CONCUR_READ_ONLY);
+      String updateQuery = "";
+      String selectQuery = "";
+      ResultSet rst;
+      rst = stmt.executeQuery("select * from Libraries");
+      for(HourStatPacket hour : hourPackets){
+        //Grab the data you are trying to update
+        rst = stmt.executeQuery("select H.fill_average from Library_Hour_Average H where H.library_name ='" + hour.libraryName + "' and H.hour='"+ hour.hourIndex.toString()+"'");
+        while(rst.next()) {
+          Float avg = rst.getFloat(1);
+          //Compute the new average factoring in the value
+          avg = (float) ((avg * (hour.numIntervals - 1) + hour.floorFillPercentage)/hour.numIntervals);
+          //Place the value back in the database factoring in this hour
+          updateQuery = "UPDATE Library_Hour_Average H SET fill_average = "+avg+" where H.library_name ='" + hour.libraryName + "' and H.hour='"+ hour.hourIndex.toString()+"'";
+          stmt2.executeUpdate(updateQuery);
+      }
+      }
+      rst.close();
     stmt.close();
+    stmt2.close();
     } catch (SQLException err) {
     System.err.println(err.getMessage());
       }

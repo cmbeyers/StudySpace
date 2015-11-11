@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>miStudySpace</title>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+                    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.symbol.min.js"></script>
+                    <script type="text/javascript" src="http://raw.github.com/markrcote/flot-axislabels/master/jquery.flot.axislabels.js"></script>
+                    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.time.min.js"></script>
+                    <link rel="stylesheet" href="/static/global.css">
+                        <link rel="stylesheet" href="/static/circle.css">
+                            <link rel="stylesheet" href="/static/floor.css">
+                                </head>
+    
+    <body>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="/library?name={{ libraryName }}"style="float:left"> &lt; Back </a>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid  ">
+            <div class="row">
+                <div class="col-xs-12  text-center" style="padding-bottom:20px">
+                    <h1 class="title">{{ floorName }} Floor</h1><br>
+                    <div class="c100 p{{ floorOccupancy }} turquois center" >
+                        <span>{{ floorOccupancy }}%</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+            <div class="row slideContainer">
+                <div class-"col-xs-12">
+                    <h2 style="margin-bottom:0xpx">Regions</h2>
+                </div>
+                {% for regionName, regionOccupancy in regionInfo %}
+                <div class="slide text-center" >
+                    <div class="c100 p{{ regionOccupancy }} pink small center">
+                        <span>{{ regionOccupancy }}%</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                            <div class="fill"></div>
+                            
+                        </div>
+                        <hr style="height: 50px; visibility: hidden;"></hr>
+                        <p style="padding-top:10px">{{ regionName }} </p>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <br>
+                    <img src="/static/{{ libraryName }}_{{ floorName }}.png">
+                        <br>
+                        </div>
+            </div>
+        </div>
+    </body>
+    
+    
+    <footer style="position:absolute; bottom:0">
+        <!--  &copy; StudySpace-->
+    </footer>
+</html>
+
