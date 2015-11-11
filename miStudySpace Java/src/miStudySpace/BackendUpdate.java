@@ -19,6 +19,7 @@ public class BackendUpdate {
   public Vector<FloorPacket> floorPackets;
   public Vector<LibraryPacket> libraryPackets;
   public Vector<HourStatPacket> hourStatPackets;
+  public Vector<HourStatPacket> libraryHourStatPackets;
   public Timer timer;
   //Current attachment being loaded into db
   public File curAttachment;
@@ -58,6 +59,7 @@ public class BackendUpdate {
     floorPackets = new Vector<FloorPacket>();
     libraryPackets = new Vector<LibraryPacket>();
     hourStatPackets = new Vector<HourStatPacket>();
+    libraryHourStatPackets = new Vector<HourStatPacket>();
     //System.out.println("Getting Stats for Floor:" + floor);
     String floorStr = null;
     for(Integer floor = 0; floor < 5; floor++){
@@ -176,10 +178,12 @@ public class BackendUpdate {
       System.out.println("Floor:"+floor+" Floor:"+floorTotal+" North:"+northTotal+" Center:"+centerTotal+" South:"+southTotal);
     }
     libraryPackets.addElement(new LibraryPacket("Shapiro", libraryTotal));
+    libraryHourStatPackets.add(new HourStatPacket("Shapiro", "Null",libraryTotal/1400.0, hourIndex,numIntervalsThisHour));
     MiStudySpaceRunnable.db.updateFloors(floorPackets);
     MiStudySpaceRunnable.db.updateLibraries(libraryPackets);
     MiStudySpaceRunnable.db.updateRegions(regionPackets);
     MiStudySpaceRunnable.db.updateHourlyStats(hourStatPackets);
+    MiStudySpaceRunnable.db.updateLibraryHourlyStats(hourStatPackets);
 
   }
   public void getData(File inFile){

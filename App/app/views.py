@@ -22,14 +22,14 @@ def library():
     entries = None;
     libName=request.args['name']
     cur = mysql.connection.cursor()
-
+    
     #Library Occupancy
     cur.execute("SELECT * FROM miStudySpace.Libraries WHERE library_name=%s", {str(libName)})
     libraryInfo = cur.fetchall()
     libraryOccupancy = int(round((libraryInfo[0][1]/libraryInfo[0][2])*100))
     libraryName=libraryInfo[0][0]
     
-
+    
     #Floors Occupancy
     cur.execute("SELECT * FROM miStudySpace.Floors WHERE library_name=%s ORDER BY floor_index ASC", {str(libName)})
     floorName = []
@@ -41,8 +41,8 @@ def library():
     floorInfo=zip(floorName, floorOccupancy)
 
 
-    #Averages
-    cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s ORDER BY hour ASC", {str(libName)})
+#Averages
+cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s ORDER BY hour ASC", {str(libName)})
     entries = cur.fetchall();
     hour = []
     fillAverage = []
@@ -52,14 +52,14 @@ def library():
         hour.append(entry[1])
         fillAverage.append(entry[2]*100)
         label.append(str(entry[2]*100)+"%")
-    averageInfo = zip(hour, fillAverage, label)
+averageInfo = zip(hour, fillAverage, label)
     print averageInfo
-
+    
     if libraryInfo:
         return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo, libraryName= libraryName)
 
-    else:
-        return render_template('404.html')
+else:
+    return render_template('404.html')
 
 
 
@@ -85,9 +85,9 @@ def floor():
     regionInfo = zip(regionName, regionOccupancy)
 
 
-    if entries:
-        return render_template('floor.html', regionInfo=regionInfo, floorName=entry[1], libraryName=entry[2], floorOccupancy = floorOccupancy)
-                               
+if entries:
+    return render_template('floor.html', regionInfo=regionInfo, floorName=entry[1], libraryName=entry[2], floorOccupancy = floorOccupancy)
+    
     else:
         return render_template('404.html')
 
