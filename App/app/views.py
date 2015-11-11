@@ -27,6 +27,7 @@ def library():
     cur.execute("SELECT * FROM miStudySpace.Libraries WHERE library_name=%s", {str(libName)})
     libraryInfo = cur.fetchall()
     libraryOccupancy = int(round((libraryInfo[0][1]/libraryInfo[0][2])*100))
+    libraryName=libraryInfo[0][0]
     
 
     #Floors Occupancy
@@ -55,12 +56,40 @@ def library():
     print averageInfo
 
     if libraryInfo:
-        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo)
+        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo, libraryName= libraryName)
 
     else:
         return render_template('404.html')
 
 
+
+@app.route("/floor")
+def floor():
+    libName=request.args['name']
+    floorName=request.args['floor']
+    cur = mysql.connection.cursor()
+    
+    #Floor Occupancy
+    cur.execute("SELECT * FROM miStudySpace.Floors WHERE library_name = %s and floor_name = %s", ({str(libName)}, {str(floorName)}))
+    entries = cur.fetchall()
+    floorOccupancy = int(round((entries[0][3]/entries[0][4])*100))
+    
+    #Region Occupancy
+    cur.execute("SELECT * FROM miStudySpace.Regions WHERE library_name=%s and floor_name=%s ORDER BY region_index ASC", ({str(libName)}, {str(floorName)}))
+    entries = cur.fetchall()
+    regionName = []
+    regionOccupancy = []
+    for entry in entries:
+        regionName.append(entry[0])
+        regionOccupancy.append(int(round((entry[4]/entry[5])*100)))
+    regionInfo = zip(regionName, regionOccupancy)
+
+
+    if entries:
+        return render_template('floor.html', regionInfo=regionInfo, floorName=entry[1], libraryName=entry[2], floorOccupancy = floorOccupancy)
+                               
+    else:
+        return render_template('404.html')
 
 
 

@@ -1,11 +1,3 @@
-.floors{
-    background-color: #1f253d;
-    width:100%;
-    /*overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;*/
-    
-}
 
 /*.floor-col{
     float:none;
@@ -14,6 +6,16 @@
     vertical-align:top;
 }*/
 
+/*a{
+    font-size:15px;
+    line-height:1;
+}*/
+
+.floor-titles{
+    height: 45px;
+    visibility:hidden;
+}
+
 .averages{
     background-color: #11A8AB;
 }
@@ -21,10 +23,11 @@
 body {
     font-family: Verdana, Arial, sans-serif;
     font-size: 12px;
+    overflow-x:hidden;
 }
 
 h1 {
-    width: 450px;
+    width: 100%;
     margin: 0 auto;
     font-size: 20px;
     text-align: center;
@@ -42,6 +45,19 @@ h2{
     background-color: #11A8AB;
 }
 
+
+.slideContainer {
+    overflow-x: scroll;
+    white-space: nowrap;
+    background-color:#1f253d;
+    height:190px;
+}
+
+.slide {
+    display: inline-block;
+    width: 35%;
+    white-space: normal;
+}
 /*.floors-panel{
     position: absolute;
     top: 0px;
@@ -50,3 +66,23 @@ h2{
     width: 100%;
 
 }*/
+
+/*@media (min-width:768px) {
+    .container {
+        width:100%;
+    }
+    #main-content{
+        min-height: 100%;
+        height: auto;
+        
+    }
+    #main-content > .row {
+        overflow-x:scroll;
+        overflow-y:hidden;
+        white-space:nowrap;
+    }
+    #main-content > .row [class*="col-lg"], #main-content > .row [class*="col-md"], #main-content > .row [class*="col-sm"] {
+        float:none;
+        display:inline-block;
+    }
+*/
