@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -37,6 +38,7 @@ public class BackendUpdate {
   public Integer northTotal;
   public Integer centerTotal;
   public Integer southTotal;
+  public Integer dayOfWeekIndex;
   
   public BackendUpdate(){
     hourIndex = 0;
@@ -52,7 +54,7 @@ public class BackendUpdate {
     timer = new Timer();
     //timer.schedule(new AutoUpdate(), 900000); //900000 milliseconds = 15 mins
     //timer.schedule(new AutoUpdate(), 5000); //900000 milliseconds = 15 mins
-    timer.scheduleAtFixedRate(new AutoUpdate(),(long) 0.1 ,30000 );
+    timer.scheduleAtFixedRate(new AutoUpdate(),(long) 0.1 ,300000 );
   }
   public void getShapiroStats(){
     regionPackets = new Vector<RegionPacket>();
@@ -143,34 +145,34 @@ public class BackendUpdate {
       ///SET UP THE SQL PACKETS
       if(floor == 0){
         floorPackets.add(new FloorPacket("Shapiro","Basement",floorTotal));
-        hourStatPackets.add(new HourStatPacket("Shapiro","Basement", floorTotal/219.0, hourIndex,numIntervalsThisHour));
+        hourStatPackets.add(new HourStatPacket("Shapiro","Basement", floorTotal/219.0, hourIndex,numIntervalsThisHour,dayOfWeekIndex));
         regionPackets.add(new RegionPacket("Shapiro","Basement", "North",northTotal));
         regionPackets.add(new RegionPacket("Shapiro","Basement", "Center",centerTotal));
         regionPackets.add(new RegionPacket("Shapiro","Basement", "South",southTotal));
       }
       else if(floor == 1){
         floorPackets.add(new FloorPacket("Shapiro","First",floorTotal));
-        hourStatPackets.add(new HourStatPacket("Shapiro","First",floorTotal/404.0, hourIndex,numIntervalsThisHour));
+        hourStatPackets.add(new HourStatPacket("Shapiro","First",floorTotal/404.0, hourIndex,numIntervalsThisHour,dayOfWeekIndex));
         regionPackets.add(new RegionPacket("Shapiro","First", "North",northTotal));
         regionPackets.add(new RegionPacket("Shapiro","First", "Center",centerTotal));
         regionPackets.add(new RegionPacket("Shapiro","First", "South",southTotal));
       }
       else if(floor == 2){
         floorPackets.add(new FloorPacket("Shapiro","Second",floorTotal));
-        hourStatPackets.add(new HourStatPacket("Shapiro","Second",floorTotal/342.0, hourIndex,numIntervalsThisHour));
+        hourStatPackets.add(new HourStatPacket("Shapiro","Second",floorTotal/342.0, hourIndex,numIntervalsThisHour,dayOfWeekIndex));
         regionPackets.add(new RegionPacket("Shapiro","Second", "North",northTotal));
         regionPackets.add(new RegionPacket("Shapiro","Second", "Center",centerTotal));
         regionPackets.add(new RegionPacket("Shapiro","Second", "South",southTotal));
       }
       else if(floor == 3){
         floorPackets.add(new FloorPacket("Shapiro","Third",floorTotal));
-        hourStatPackets.add(new HourStatPacket("Shapiro","Third",floorTotal/206.0, hourIndex,numIntervalsThisHour));
+        hourStatPackets.add(new HourStatPacket("Shapiro","Third",floorTotal/206.0, hourIndex,numIntervalsThisHour,dayOfWeekIndex));
         regionPackets.add(new RegionPacket("Shapiro","Third", "North",northTotal));
         regionPackets.add(new RegionPacket("Shapiro","Third", "South",southTotal));
       }
       if(floor == 4){
         floorPackets.add(new FloorPacket("Shapiro","Fourth",floorTotal));
-        hourStatPackets.add(new HourStatPacket("Shapiro","Fourth",floorTotal/228.0, hourIndex,numIntervalsThisHour));
+        hourStatPackets.add(new HourStatPacket("Shapiro","Fourth",floorTotal/228.0, hourIndex,numIntervalsThisHour,dayOfWeekIndex));
         regionPackets.add(new RegionPacket("Shapiro","Fourth", "North",northTotal));
         regionPackets.add(new RegionPacket("Shapiro","Fourth", "Center",centerTotal));
         regionPackets.add(new RegionPacket("Shapiro","Fourth", "South",southTotal));
@@ -178,7 +180,7 @@ public class BackendUpdate {
       System.out.println("Floor:"+floor+" Floor:"+floorTotal+" North:"+northTotal+" Center:"+centerTotal+" South:"+southTotal);
     }
     libraryPackets.addElement(new LibraryPacket("Shapiro", libraryTotal));
-    libraryHourStatPackets.add(new HourStatPacket("Shapiro", "Null",libraryTotal/1400.0, hourIndex,numIntervalsThisHour));
+    libraryHourStatPackets.add(new HourStatPacket("Shapiro", "Null",libraryTotal/1400.0, hourIndex,numIntervalsThisHour,dayOfWeekIndex));
     MiStudySpaceRunnable.db.updateFloors(floorPackets);
     MiStudySpaceRunnable.db.updateLibraries(libraryPackets);
     MiStudySpaceRunnable.db.updateRegions(regionPackets);
@@ -202,9 +204,10 @@ public class BackendUpdate {
     String uniqueUsers = null;
     String multipleAP = null;
     String timeStamp= null;
+    String dateStamp = null;
     int count = 0;
     try {
-      br.readLine();//Date
+      dateStamp = br.readLine();//Date
       timeStamp = br.readLine();//Time
       br.readLine();//Blank
       br.readLine();//Total Devices
@@ -216,6 +219,19 @@ public class BackendUpdate {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+    //GRAB THE DATE
+    dateStamp = dateStamp.substring(dateStamp.indexOf(":")+1);
+    dateStamp=dateStamp.trim();
+    Integer month = Integer.parseInt(dateStamp.substring(0, dateStamp.indexOf("/")).trim()) - 1; //January is 0
+    dateStamp = dateStamp.substring(dateStamp.indexOf("/")+1);
+    dateStamp=dateStamp.trim();
+    Integer day = Integer.parseInt(dateStamp.substring(0, dateStamp.indexOf("/")).trim()); 
+    dateStamp = dateStamp.substring(dateStamp.indexOf("/")+1);
+    dateStamp=dateStamp.trim();
+    Integer year = Integer.parseInt(dateStamp);
+    Calendar c = Calendar.getInstance();
+    c.set(year, month, day);
+    dayOfWeekIndex = c.get(Calendar.DAY_OF_WEEK);
     //GRAB THE TIMESTAMP
     String hourString = null;
     //Move past the word date
