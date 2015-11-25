@@ -42,7 +42,7 @@ def library():
 
 
     #Averages
-    cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s ORDER BY hour ASC", {str(libName)})
+    cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and day_index = 1 ORDER BY hour ASC", {str(libName)})
     entries = cur.fetchall();
     hour = []
     fillAverage = []
