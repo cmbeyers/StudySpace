@@ -50,8 +50,8 @@ def library():
     for entry in entries:
         print entry[1]
         hour.append(entry[1])
-        fillAverage.append(entry[2]*100)
-        label.append(str(entry[2]*100)+"%")
+        fillAverage.append(entry[4]*100)
+        label.append(str(entry[4]*100)+"%")
     averageInfo = zip(hour, fillAverage, label)
     print averageInfo
     
