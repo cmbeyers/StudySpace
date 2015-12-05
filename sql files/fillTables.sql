@@ -427,74 +427,518 @@ VALUES ('Shapiro', 'Fourth', 23, 0.0);
 
 -- Fill Library Hour Averages
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 0, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 0, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 1, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 1, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 2, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 2, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 3, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 3, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 4, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 4, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 5, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 5, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 6, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 6, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro',7, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',7, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 8, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 8, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 9, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 9, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 10, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 10, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 11, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 11, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 12, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 12, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 13, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 13, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro',14, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',14, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 15, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 15, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 16, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 16, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 17, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 17, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 18, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 18, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 19, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 19, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 20, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 20, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 21, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 21, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 22, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 22, 0.0, 1, 'Monday');
 
-INSERT INTO Library_Hour_Average(library_name, hour, fill_average)
-VALUES ('Shapiro', 23, 0.0);
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 23, 0.0, 1, 'Monday');
+
+-- Tuesday
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 0, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 1, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 2, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 3, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 4, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 5, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 6, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',7, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 8, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 9, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 10, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 11, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 12, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 13, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',14, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 15, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 16, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 17, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 18, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 19, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 20, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 21, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 22, 0.0, 2, 'Tuesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 23, 0.0, 2, 'Tuesday');
+
+-- Wednesday
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 0, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 1, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 2, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 3, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 4, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 5, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 6, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',7, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 8, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 9, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 10, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 11, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 12, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 13, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',14, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 15, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 16, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 17, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 18, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 19, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 20, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 21, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 22, 0.0, 3, 'Wednesday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 23, 0.0, 3, 'Wednesday');
+
+-- Thursday
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 0, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 1, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 2, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 3, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 4, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 5, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 6, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',7, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 8, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 9, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 10, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 11, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 12, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 13, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',14, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 15, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 16, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 17, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 18, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 19, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 20, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 21, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 22, 0.0, 4, 'Thursday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 23, 0.0, 4, 'Thursday');
+
+-- Friday
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 0, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 1, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 2, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 3, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 4, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 5, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 6, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',7, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 8, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 9, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 10, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 11, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 12, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 13, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',14, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 15, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 16, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 17, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 18, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 19, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 20, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 21, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 22, 0.0, 5, 'Friday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 23, 0.0, 5, 'Friday');
+
+-- Saturday
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 0, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 1, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 2, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 3, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 4, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 5, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 6, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',7, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 8, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 9, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 10, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 11, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 12, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 13, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',14, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 15, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 16, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 17, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 18, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 19, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 20, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 21, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 22, 0.0, 6, 'Saturday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 23, 0.0, 6, 'Saturday');
+
+-- Sunday
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 0, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 1, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 2, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 3, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 4, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 5, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 6, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',7, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 8, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 9, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 10, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 11, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 12, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 13, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro',14, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 15, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 16, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 17, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 18, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 19, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 20, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 21, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 22, 0.0, 7, 'Sunday');
+
+INSERT INTO Library_Hour_Average(library_name, hour, fill_average, day_index, day_string)
+VALUES ('Shapiro', 23, 0.0, 7, 'Sunday');

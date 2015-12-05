@@ -49,3 +49,43 @@ h2{
 img{
     padding-bottom:30px;
 }
+
+
+.circle strong {
+    
+    left: 0;
+    width: 100%;
+    
+    line-height: 40px;
+    
+    color: white;
+}
+
+
+#container{
+    position:relative;
+    float:left;
+    right:-40%;
+    top:30px;
+    
+}
+
+.circle canvas{
+    position: relative;
+    z-index: 1;
+    
+}
+
+div.floor.circle strong{
+    z-index:2;
+    position:absolute;
+    font-size:15px;
+}
+
+div.library.circle strong{
+    text-align: center;
+    position: absolute;
+    top: 80px;
+    text-align:center;
+    font-size: 25px;
+}

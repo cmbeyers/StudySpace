@@ -4,6 +4,7 @@
 
 USE miStudySpace;
 
+DROP TABLE if exists Library_Hour_Average;
 DROP TABLE if exists Hour_Average;
 DROP TABLE if exists Regions;
 DROP TABLE if exists Floors;
@@ -50,8 +51,10 @@ CREATE TABLE Hour_Average (
 CREATE TABLE Library_Hour_Average (
 	library_name VARCHAR(40) NOT NULL,
 	hour INTEGER, -- Hour from 0-23
+	day_index INTEGER, -- Day Monday 1 to sunday 7
+	day_string VARCHAR(10),
 	fill_average FLOAT(5), -- Precision of 5
-	PRIMARY KEY (library_name, hour)
+	PRIMARY KEY (library_name, hour, day_index)
 );
 
 

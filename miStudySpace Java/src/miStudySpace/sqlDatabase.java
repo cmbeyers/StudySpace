@@ -130,13 +130,13 @@ public class sqlDatabase {
       rst = stmt.executeQuery("select * from Libraries");
       for(HourStatPacket hour : hourPackets){
         //Grab the data you are trying to update
-        rst = stmt.executeQuery("select H.fill_average from Library_Hour_Average H where H.library_name ='" + hour.libraryName + "' and H.hour='"+ hour.hourIndex.toString()+"'");
+        rst = stmt.executeQuery("select H.fill_average from Library_Hour_Average H where H.library_name ='" + hour.libraryName + "' and H.hour='"+ hour.hourIndex.toString()+"' and H.day_index='" + hour.dayIndex.toString()+"'");
         while(rst.next()) {
           Float avg = rst.getFloat(1);
           //Compute the new average factoring in the value
           avg = (float) ((avg * (hour.numIntervals - 1) + hour.floorFillPercentage)/hour.numIntervals);
           //Place the value back in the database factoring in this hour
-          updateQuery = "UPDATE Library_Hour_Average H SET fill_average = "+avg+" where H.library_name ='" + hour.libraryName + "' and H.hour='"+ hour.hourIndex.toString()+"'";
+          updateQuery = "UPDATE Library_Hour_Average H SET fill_average = "+avg+" where H.library_name ='" + hour.libraryName + "' and H.hour='"+ hour.hourIndex.toString()+"' and H.day_index='" + hour.dayIndex.toString()+"'";
           stmt2.executeUpdate(updateQuery);
       }
       }

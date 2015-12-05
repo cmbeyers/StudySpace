@@ -90,8 +90,3 @@ def floor():
     
     else:
         return render_template('404.html')
-
-
-
-
-
