@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+            .circle strong {
+                position: absolute;
+                top: 30px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                line-height: 40px;
+                font-size: 30px;
+            }
+        .circle canvas{
+            position: relative;
+            
+        }
+        </style>
+    </head>
+    <body>
+
+        
+        <script>
+            $('.third.circle').circleProgress({
+                                              value: .75,
+                                              fill: { gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI / 4 }
+                                              }).on('circle-animation-progress', function(event, progress, stepValue) {
+                                                    //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1) + '%');
+                                                    console.log("Progress: " + progress);
+                                                    console.log("stepValue: " + stepValue);
+                                                    $(this).find('strong').html(parseInt(100 * stepValue) + '<i>%</i>');
+                                                    
+                                                    });
+
+            </script>
+    </body>
+</html>

@@ -42,7 +42,7 @@ def library():
 
 
     #Averages
-    cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and day_index = 1 ORDER BY hour ASC", {str(libName)})
+    cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s ORDER BY hour ASC", {str(libName)})
     entries = cur.fetchall();
     hour = []
     fillAverage = []
@@ -50,8 +50,8 @@ def library():
     for entry in entries:
         print entry[1]
         hour.append(entry[1])
-        fillAverage.append(entry[4]*100)
-        label.append(str(entry[4]*100)+"%")
+        fillAverage.append(entry[2]*100)
+        label.append(str(entry[2]*100)+"%")
     averageInfo = zip(hour, fillAverage, label)
     print averageInfo
     
@@ -59,7 +59,7 @@ def library():
         return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo, libraryName= libraryName)
 
     else:
-    return render_template('404.html')
+        return render_template('404.html')
 
 
 
@@ -90,8 +90,3 @@ def floor():
     
     else:
         return render_template('404.html')
-
-
-
-
-
