@@ -93,7 +93,8 @@ def floor():
     cur.execute("SELECT * FROM miStudySpace.Floors WHERE library_name = %s and floor_name = %s", ({str(libName)}, {str(floorName)}))
     entries = cur.fetchall()
     floorOccupancy = int(round((entries[0][3]/entries[0][4])*100))
-    
+    if floorOccupancy > 100:
+        floorOccupancy = 100
     #Region Occupancy
     cur.execute("SELECT * FROM miStudySpace.Regions WHERE library_name=%s and floor_name=%s ORDER BY region_index ASC", ({str(libName)}, {str(floorName)}))
     entries = cur.fetchall()
