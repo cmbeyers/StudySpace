@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.symbol.min.js"></script>
         <script type="text/javascript" src="http://raw.github.com/markrcote/flot-axislabels/master/jquery.flot.axislabels.js"></script>
@@ -14,6 +15,7 @@
         <link rel="stylesheet" href="/static/global.css">
         <script src="static/jquery-circle-progress/dist/circle-progress.js"></script>
         <link rel="stylesheet" href="/static/library.css">
+        <script rel="javascript" src ="static/js/library.js"></script>
     </head>
     
     <body>
@@ -50,7 +52,7 @@
                 {% for floorName, floorOccupancy in floorInfo %}
                 <div class="slide text-center">
                     
-                    <a href="/floor?name={{ libraryName }}&floor={{ floorName }}" >
+                    <a style = "text-decoration:underline;" href="/floor?name={{ libraryName }}&floor={{ floorName }}" >
                         <div class="floor circle {{floorName}}">
                         <div id="container">
                             <strong id="strong-{{floorName}}"></strong>
@@ -84,12 +86,71 @@
                {%endfor%}
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row averages">
-                <div class="col-xs-12">
-                    <h2>Averages</h2>
-                    <button id="dayButton">Daily</button>
-                    <button id="hourButton">Hourly</button>
+
+                    <!--<button id="dayButton">Daily</button>
+                    <button id="hourButton">Hourly</button>-->
+                    <div class="container-fluid">
+                        <div class="row averages">
+                            <h2>Averages</h2>
+                            <div class="col-xs-12">
+                                <div class="dropdown">
+                                    
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Monday ▼
+                                        </button>
+                                    <ul class="dropdown-menu">
+                                        {% for number, name in labels %}
+                                        
+                                        <li><a value = "{{number}}" id="{{name}}">{{name}}</a></li>
+
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                   <!--<div id="carousel" class="carousel slide col-xs-12" style="width:100%"data-ride="carousel">
+                        
+                                <!--
+                                
+
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <p>Tuesday</p>
+                                <div id="placeholder"></div>
+                            </div>
+                            <div class="item">
+                                <p>Wednesday</p>
+                                <div id="placeholder"></div>
+                            </div>
+                            <div class="item">
+                                <p>Thursday</p>
+                                <div id="placeholder"></div>
+                            </div>
+                            <div class="item">
+                                <p>Friday</p>
+                                <div id="placeholder"></div>
+                            </div>
+                            <div class="item">
+                                <p>Saturday</p>
+                                <div id="placeholder"></div>
+                            </div>
+                            <div class="item">
+                                <p>Sunday</p>
+                                <div id="placeholder"></div>
+                            </div>
+                            <div class="item">
+                                <p>Monday</p>
+                                <div id="placeholder"></div>
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        
+                    </div>-->
+                        
                     <div id="placeholder"></div>
                 </div>
             </div>
@@ -163,140 +224,43 @@
                     {label: "Occupancy in %",  data: d1, points: { symbol: "circle", fillColor: "white" }, color: 'white'}
                          ];
 
-            var d2 = {{ dayAverageInfo|tojson|safe }};
+            /*var d2 = {{ dayAverageInfo|tojson|safe }};
             console.log(d2);
             var data2 = [
                          {label: "Occupancy in %",  data: d2, points: { symbol: "circle", fillColor: "white" }, color: 'white'}
-                         ];
-
-        $("#dayButton").click(function () {
-
-                  $.plot($("#placeholder"), data2, {
-                         xaxis: {
-                         min: 0,
-                         max: 6,
-                         tickSize: 1,
-                         tickLength: 0,
-                         axisLabel: 'Day',
-                         axisLabelUseCanvas: true,
-                         axisLabelFontSizePixels: 12,
-                         axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
-                         axisLabelPadding: 5
-                         },
-                         yaxis: {
-                         min: 0,
-                         max: 100,
-                         axisLabel: 'Percentage Full',
-                         axisLabelUseCanvas: true,
-                         axisLabelFontSizePixels: 12,
-                         axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
-                         axisLabelPadding: 5
-                         },
-                         series: {
-                         lines: { show: true },
-                         points: {
-                         radius: 3,
-                         show: true,
-                         fill: true
-                         },
-                         },
-                         grid: {
-                         hoverable: true,
-                         borderWidth: 1
-                         }
-                         
-                         });
-                  
-                  
-                  $("#placeholder").bind("plothover", function (event, pos, item) {
-                                         $("#tooltip").remove();
-                                         if (item) {
-                                         var tooltip = item.series.data[item.dataIndex][2];
-                                         
-                                         $('<div id="tooltip">' + tooltip + '</div>')
-                                         .css({
-                                              position: 'absolute',
-                                              display: 'none',
-                                              top: item.pageY + 5,
-                                              left: item.pageX + 5,
-                                              border: '1px solid #fdd',
-                                              padding: '2px',
-                                              'background-color': '#fee',
-                                              opacity: 0.80 })
-                                         .appendTo("body").fadeIn(200);
-                                         
-                                         
-                                         showTooltip(item.pageX, item.pageY, tooltip);
-                                         }
-                                         });
-                  
-                  });
+                         ];*/
 
 
-$("#hourButton").click(function () {
-                      
-                       $.plot($("#placeholder"), data1, {
-                              xaxis: {
-                              min: 0,
-                              max: 23,
-                              tickSize: 2,
-                              tickLength: 0,
-                              axisLabel: 'Time',
-                              axisLabelUseCanvas: true,
-                              axisLabelFontSizePixels: 12,
-                              axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
-                              axisLabelPadding: 5
-                              },
-                              yaxis: {
-                              min: 0,
-                              max: 100,
-                              axisLabel: 'Percentage Full',
-                              axisLabelUseCanvas: true,
-                              axisLabelFontSizePixels: 12,
-                              axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
-                              axisLabelPadding: 5
-                              },
-                              series: {
-                              lines: { show: true },
-                              points: {
-                              radius: 3,
-                              show: true,
-                              fill: true
-                              },
-                              },
-                              grid: {
-                              hoverable: true,
-                              borderWidth: 1
-                              }
-                              
-                              });
-                       
-                       
-                       $("#placeholder").bind("plothover", function (event, pos, item) {
-                                              $("#tooltip").remove();
-                                              if (item) {
-                                              var tooltip = item.series.data[item.dataIndex][2];
-                                              
-                                              $('<div id="tooltip">' + tooltip + '</div>')
-                                              .css({
-                                                   position: 'absolute',
-                                                   display: 'none',
-                                                   top: item.pageY + 5,
-                                                   left: item.pageX + 5,
-                                                   border: '1px solid #fdd',
-                                                   padding: '2px',
-                                                   'background-color': '#fee',
-                                                   opacity: 0.80 })
-                                              .appendTo("body").fadeIn(200);
-                                              
-                                              
-                                              showTooltip(item.pageX, item.pageY, tooltip);
-                                              }
-                                              });
-                       
-                       });
+{% for day in dayAverageInfo %}
+        var day{{loop.index}} = {{ day|tojson|safe }};
+        var data{{loop.index}} = [
+                                  {label: "Occupancy in %",  data: day{{loop.index}}, points: { symbol: "circle", fillColor: "white" }, color: 'white'}
+                                  ];
+                                  
+                                  
+                                  {% endfor %}
+
+
+
             $(document).ready(function () {
-                              $.plot($("#placeholder"), data1, {
+                              var d = new Date();
+                              var n = d.getDay();
+                              var d = new Date();
+                              var weekday = new Array(7);
+                              weekday[7]=  "Sunday";
+                              weekday[1] = "Monday";
+                              weekday[2] = "Tuesday";
+                              weekday[3] = "Wednesday";
+                              weekday[4] = "Thursday";
+                              weekday[5] = "Friday";
+                              weekday[6] = "Saturday";
+                              
+                            
+                              var dayName = weekday[d.getDay()];
+                              
+                              $(".btn:first-child").text(dayName +" ▼");
+                              $(".btn:first-child").val(dayName +" ▼");
+                              $.plot($("#placeholder"), data3, {
                                 xaxis: {
                                      min: 0,
                                      max: 23,
@@ -356,6 +320,76 @@ $("#hourButton").click(function () {
               });
 
             });
+
+
+{% for number, name in labels %}
+        
+
+        
+$("#{{name}}").click(function(){
+                      $(".btn:first-child").text($(this).text()+" ▼");
+                      $(".btn:first-child").val($(this).text()+" ▼");
+                     $.plot($("#placeholder"), data{{number}}, {
+       xaxis: {
+       min: 0,
+       max: 23,
+       tickSize: 2,
+       tickLength: 0,
+       axisLabel: 'Time',
+       axisLabelUseCanvas: true,
+       axisLabelFontSizePixels: 12,
+       axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+       axisLabelPadding: 5
+       },
+       yaxis: {
+       min: 0,
+       max: 100,
+       axisLabel: 'Percentage Full',
+       axisLabelUseCanvas: true,
+       axisLabelFontSizePixels: 12,
+       axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+       axisLabelPadding: 5
+       },
+       series: {
+       lines: { show: true },
+       points: {
+       radius: 3,
+       show: true,
+       fill: true
+       },
+       },
+       grid: {
+       hoverable: true,
+       borderWidth: 1
+       }
+       
+       });
+       
+       
+       $("#placeholder").bind("plothover", function (event, pos, item) {
+                              $("#tooltip").remove();
+                              if (item) {
+                              var tooltip = item.series.data[item.dataIndex][2];
+                              
+                              $('<div id="tooltip">' + tooltip + '</div>')
+                              .css({
+                                   position: 'absolute',
+                                   display: 'none',
+                                   top: item.pageY + 5,
+                                   left: item.pageX + 5,
+                                   border: '1px solid #fdd',
+                                   padding: '2px',
+                                   'background-color': '#fee',
+                                   opacity: 0.80 })
+                              .appendTo("body").fadeIn(200);
+                              
+                              
+                              showTooltip(item.pageX, item.pageY, tooltip);
+                              }
+                              });
+                              
+                              });
+                              {% endfor %}
             </script>
         
         

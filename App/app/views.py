@@ -9,6 +9,7 @@ import hashlib
 from datetime import timedelta
 from app import app
 from app import mysql
+import time
 
 
 
@@ -49,29 +50,43 @@ def library():
     fillAverage = []
     label = []
     for entry in entries:
-        hour.append(entry[2])
-        fillAverage.append(entry[3]*100)
-        label.append(str(entry[3]*100)+"%")
+       hour.append(entry[2])
+       fillAverage.append(entry[3]*100)
+       label.append(str(entry[3]*100)+"%")
     averageInfo = zip(hour, fillAverage, label)
 
     #Week Averages
     #Temporarily only using hour 0 until database is fixed
     #Need Database to provide only one number per day of the week
-    cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and hour='0' ORDER BY day_index ASC", {str(libName)})
-    entries = cur.fetchall();
-    weekDay = []
-    dayFillAverage = []
-    dataLabel = []
-    dayLabel = []
-    for entry in entries:
-        weekDay.append(entry[2])
-        dayFillAverage.append(entry[4]*100)
-        dataLabel.append(str(entry[4]*100)+"%")
-        dayLabel.append(entry[3])
-    dayAverageInfo=zip(weekDay, dayFillAverage, dataLabel, dayLabel)
+    currentDay = time.strftime("%w")
+    dayAverageInfo = []
+    labels = [(1, "Monday"), (2, "Tuesday"), (3, "Wednesday"), (4, "Thursday"), (5, "Friday"), (6, "Saturday"), (7, "Sunday")]
+
+
+    for x in range (1, 8):
+        print x
+        name=[]
+        cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and day_index=%s ORDER BY hour ASC", ({str(libName)}, str(x)))
+        entries = cur.fetchall();
+        weekDay = []
+        dayFillAverage = []
+        dataLabel = []
+        dayLabel = []
+        hour = []
+        for entry in entries:
+            hour.append(entry[1])
+            dayFillAverage.append(entry[4]*100)
+            #dataLabel.append(str(entry[4]*100)+"%")
+            #dayLabel.append(entry[3])
+            #weekDay.append(entry[2])
+            #name=zip(weekDay, dayFillAverage, dataLabel, dayLabel)
+        name = zip(hour, dayFillAverage)
+        #print name[0][0]
+        dayAverageInfo.append(name)
+    print dayAverageInfo
 
     if libraryInfo:
-        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo, libraryName= libraryName, dayAverageInfo=dayAverageInfo)
+        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, libraryName=libraryName, dayAverageInfo=dayAverageInfo, currentDay=currentDay, averageInfo=averageInfo, labels=labels)
 
     else:
         return render_template('404.html')
@@ -105,3 +120,23 @@ def floor():
     
     else:
         return render_template('404.html')
+
+
+@app.route("/test")
+def test():
+    cur = mysql.connection.cursor()
+    libName=request.args['name']
+    #Day Averages
+    #Temporarily only using Basement averages from Hour_Average Table until database is fixed
+    
+    cur.execute("SELECT * FROM miStudySpace.Hour_Average WHERE library_name=%s and floor_name='Basement' ORDER BY hour ASC", {str(libName)})
+    entries = cur.fetchall();
+    hour = []
+    fillAverage = []
+    label = []
+    for entry in entries:
+        hour.append(entry[2])
+        fillAverage.append(entry[3]*100)
+        label.append(str(entry[3]*100)+"%")
+        averageInfo = zip(hour, fillAverage, label)
+    return render_template('test.html', averageInfo=averageInfo)
