@@ -49,16 +49,16 @@ def library():
 
     #Day Averages
     #Temporarily only using Basement averages from Hour_Average Table until database is fixed
-    cur.execute("SELECT * FROM miStudySpace.Hour_Average WHERE library_name=%s and floor_name='Basement' ORDER BY hour ASC", {str(libName)})
-    entries = cur.fetchall();
-    hour = []
-    fillAverage = []
-    label = []
-    for entry in entries:
-       hour.append(entry[2])
-       fillAverage.append(entry[3]*100)
-       label.append(str(entry[3]*100)+"%")
-    averageInfo = zip(hour, fillAverage, label)
+#cur.execute("SELECT * FROM miStudySpace.Hour_Average WHERE library_name=%s and floor_name='Basement' ORDER BY hour ASC", {str(libName)})
+#   entries = cur.fetchall();
+#   hour = []
+#   fillAverage = []
+#   label = []
+#   for entry in entries:
+#      hour.append(entry[2])
+#      fillAverage.append(entry[3]*100)
+#      label.append(str(entry[3]*100)+"%")
+#   averageInfo = zip(hour, fillAverage, label)
 
     #Week Averages
     #Temporarily only using hour 0 until database is fixed
@@ -91,7 +91,7 @@ def library():
     print dayAverageInfo
 
     if libraryInfo:
-        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, libraryName=libraryName, dayAverageInfo=dayAverageInfo, currentDay=currentDay, averageInfo=averageInfo, labels=labels)
+        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, libraryName=libraryName, dayAverageInfo=dayAverageInfo, currentDay=currentDay, labels=labels)
 
     else:
         return render_template('404.html')
@@ -131,21 +131,3 @@ def floor():
         return render_template('404.html')
 
 
-@app.route("/test")
-def test():
-    cur = mysql.connection.cursor()
-    libName=request.args['name']
-    #Day Averages
-    #Temporarily only using Basement averages from Hour_Average Table until database is fixed
-    
-    cur.execute("SELECT * FROM miStudySpace.Hour_Average WHERE library_name=%s and floor_name='Basement' ORDER BY hour ASC", {str(libName)})
-    entries = cur.fetchall();
-    hour = []
-    fillAverage = []
-    label = []
-    for entry in entries:
-        hour.append(entry[2])
-        fillAverage.append(entry[3]*100)
-        label.append(str(entry[3]*100)+"%")
-        averageInfo = zip(hour, fillAverage, label)
-    return render_template('test.html', averageInfo=averageInfo)
