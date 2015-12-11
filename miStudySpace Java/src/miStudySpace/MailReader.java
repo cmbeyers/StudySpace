@@ -150,7 +150,11 @@ public class MailReader
           System.out.println("Exception while connecting to server: "
                   + e.getLocalizedMessage());
           e.printStackTrace();
-          System.exit(2);
+          //System.exit(2);
+      }
+      catch (Exception e){
+        System.out.println("Exception while connecting to server: "
+            + e.getLocalizedMessage());
       }
       return false;
     }

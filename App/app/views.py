@@ -62,21 +62,26 @@ def library():
     #Week Averages
     #Temporarily only using hour 0 until database is fixed
     #Need Database to provide only one number per day of the week
-    cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and hour='0' ORDER BY day_index ASC", {str(libName)})
-    entries = cur.fetchall();
-    weekDay = []
-    dayFillAverage = []
-    dataLabel = []
-    dayLabel = []
-    for entry in entries:
-        weekDay.append(entry[2])
-        dayFillAverage.append(entry[4]*100)
-        dataLabel.append(str(entry[4]*100)+"%")
-        dayLabel.append(entry[3])
-    dayAverageInfo=zip(weekDay, dayFillAverage, dataLabel, dayLabel)
+    weekAverages = []
+    for i in range(1, 8):
+        cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and dayIndex=%i ORDER BY day_index ASC", {str(libName)}, i)
+        entries = cur.fetchall();
+        weekDay = []
+        dayFillAverage = []
+        dataLabel = []
+        dayLabel = []
+        for entry in entries:
+            weekDay.append(entry[2])
+            dayFillAverage.append(entry[4]*100)
+            dataLabel.append(str(entry[4]*100)+"%")
+            dayLabel.append(entry[3])
+        dayAverageInfo=zip(weekDay, dayFillAverage, dataLabel, dayLabel)
+        weekAverages.append(dayAverageInfo)
+
+
 
     if libraryInfo:
-        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo, libraryName= libraryName, dayAverageInfo=dayAverageInfo)
+        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo, libraryName= libraryName, weekAverageInfo=weekAverages)
 
     else:
         return render_template('404.html')
