@@ -2,6 +2,12 @@
     padding:0px;
 }
 
+.glyphicon-question-sign{
+    float: right;
+    font-size: 20px;
+    text-decoration: inherit;
+}
+
 a{
     text-decoration:underline;
 }
@@ -22,6 +28,7 @@ a{
 
 body {
     background: #50597b;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 ul {

@@ -9,6 +9,7 @@ import hashlib
 from datetime import timedelta
 from app import app
 from app import mysql
+import time
 
 
 
@@ -48,28 +49,41 @@ def library():
 
     #Day Averages
     #Temporarily only using Basement averages from Hour_Average Table until database is fixed
-    cur.execute("SELECT * FROM miStudySpace.Hour_Average WHERE library_name=%s and floor_name='Basement' ORDER BY hour ASC", {str(libName)})
-    entries = cur.fetchall();
-    hour = []
-    fillAverage = []
-    label = []
-    for entry in entries:
-        hour.append(entry[2])
-        fillAverage.append(entry[3]*100)
-        label.append(str(entry[3]*100)+"%")
-    averageInfo = zip(hour, fillAverage, label)
+#cur.execute("SELECT * FROM miStudySpace.Hour_Average WHERE library_name=%s and floor_name='Basement' ORDER BY hour ASC", {str(libName)})
+#   entries = cur.fetchall();
+#   hour = []
+#   fillAverage = []
+#   label = []
+#   for entry in entries:
+#      hour.append(entry[2])
+#      fillAverage.append(entry[3]*100)
+#      label.append(str(entry[3]*100)+"%")
+#   averageInfo = zip(hour, fillAverage, label)
 
     #Week Averages
     #Temporarily only using hour 0 until database is fixed
     #Need Database to provide only one number per day of the week
+<<<<<<< HEAD
     weekAverages = []
     for i in range(1, 8):
         cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and dayIndex=%i ORDER BY day_index ASC", {str(libName)}, i)
+=======
+    currentDay = time.strftime("%w")
+    dayAverageInfo = []
+    labels = [(1, "Monday"), (2, "Tuesday"), (3, "Wednesday"), (4, "Thursday"), (5, "Friday"), (6, "Saturday"), (7, "Sunday")]
+
+
+    for x in range (1, 8):
+        print x
+        name=[]
+        cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and day_index=%s ORDER BY hour ASC", ({str(libName)}, str(x)))
+>>>>>>> 1236426d1f6aa37e4aa40ea95f4c5a1556e4ae4c
         entries = cur.fetchall();
         weekDay = []
         dayFillAverage = []
         dataLabel = []
         dayLabel = []
+<<<<<<< HEAD
         for entry in entries:
             weekDay.append(entry[2])
             dayFillAverage.append(entry[4]*100)
@@ -82,6 +96,23 @@ def library():
 
     if libraryInfo:
         return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, averageInfo=averageInfo, libraryName= libraryName, weekAverageInfo=weekAverages)
+=======
+        hour = []
+        for entry in entries:
+            hour.append(entry[1])
+            dayFillAverage.append(entry[4]*100)
+            #dataLabel.append(str(entry[4]*100)+"%")
+            #dayLabel.append(entry[3])
+            #weekDay.append(entry[2])
+            #name=zip(weekDay, dayFillAverage, dataLabel, dayLabel)
+        name = zip(hour, dayFillAverage)
+        #print name[0][0]
+        dayAverageInfo.append(name)
+    print dayAverageInfo
+
+    if libraryInfo:
+        return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, libraryName=libraryName, dayAverageInfo=dayAverageInfo, currentDay=currentDay, labels=labels)
+>>>>>>> 1236426d1f6aa37e4aa40ea95f4c5a1556e4ae4c
 
     else:
         return render_template('404.html')
@@ -119,3 +150,5 @@ def floor():
     
     else:
         return render_template('404.html')
+
+

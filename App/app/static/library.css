@@ -98,6 +98,25 @@ div.library.circle strong{
     font-size: 25px;
 }
 
+.carousel-control.right{
+    background-image:none;
+}
+
+.carousel-control.left{
+    background-image:none;
+}
+
+.carousel-inner{
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
+    margin-bottom:5px;
+}
+
+.carousel-indicators{
+    position:relative;
+    bottom:0px;
+}
 
 /*.floors-panel{
  position: absolute;

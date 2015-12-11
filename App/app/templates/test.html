@@ -1,38 +1,142 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-        <style>
-            .circle strong {
-                position: absolute;
-                top: 30px;
-                left: 0;
-                width: 100%;
-                text-align: center;
-                line-height: 40px;
-                font-size: 30px;
-            }
-        .circle canvas{
-            position: relative;
-            
-        }
-        </style>
-    </head>
+        <title>miStudySpace</title>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+                            </head>
     <body>
 
         
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <p>Monday</p>
+                        </div>
+                
+                <div class="item">
+                    <img src="img_chania2.jpg" alt="Chania">
+                        </div>
+                
+                <div class="item">
+                    <img src="img_flower.jpg" alt="Flower">
+                        </div>
+                
+                <div class="item">
+                    <img src="img_flower2.jpg" alt="Flower">
+                        </div>
+            </div>
+            
+            
+        
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        
+        
+        
+        
+        <div id="placeholder"></div>
+        
         <script>
-            $('.third.circle').circleProgress({
-                                              value: .75,
-                                              fill: { gradient: [['#0681c4', .5], ['#4ac5f8', .5]], gradientAngle: Math.PI / 4 }
-                                              }).on('circle-animation-progress', function(event, progress, stepValue) {
-                                                    //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1) + '%');
-                                                    console.log("Progress: " + progress);
-                                                    console.log("stepValue: " + stepValue);
-                                                    $(this).find('strong').html(parseInt(100 * stepValue) + '<i>%</i>');
-                                                    
-                                                    });
-
-            </script>
+        var data = {{averageInfo|tojson|safe}}
+        var dataStuff= [
+        {label: "Occupancy in %",  data: data, points: { symbol: "circle", fillColor: "white" }, color: 'white'}
+        ];
+        
+        {% for day in dayAverageInfo %}
+        var day{{loop.index}} = {{ day|tojson|safe }};
+        var data{{loop.index}} = [
+        {label: "Occupancy in %",  data: day{{loop.index}}, points: { symbol: "circle", fillColor: "white" }, color: 'white'}
+        ];
+        
+        
+        {% endfor %}
+        
+        
+        $(document).ready(function () {
+        $.plot($("#placeholder"), dataStuff, {
+        xaxis: {
+        min: 0,
+        max: 23,
+        tickSize: 2,
+        tickLength: 0,
+        axisLabel: 'Time',
+        axisLabelUseCanvas: true,
+        axisLabelFontSizePixels: 12,
+        axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+        axisLabelPadding: 5
+        },
+        yaxis: {
+        min: 0,
+        max: 100,
+        axisLabel: 'Percentage Full',
+        axisLabelUseCanvas: true,
+        axisLabelFontSizePixels: 12,
+        axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+        axisLabelPadding: 5
+        },
+        series: {
+        lines: { show: true },
+        points: {
+        radius: 3,
+        show: true,
+        fill: true
+        },
+        },
+        grid: {
+        hoverable: true,
+        borderWidth: 1
+        }
+        
+        });
+        
+        
+        $("#placeholder").bind("plothover", function (event, pos, item) {
+        $("#tooltip").remove();
+        if (item) {
+        var tooltip = item.series.data[item.dataIndex][2];
+        
+        $('<div id="tooltip">' + tooltip + '</div>')
+        .css({
+        position: 'absolute',
+        display: 'none',
+        top: item.pageY + 5,
+        left: item.pageX + 5,
+        border: '1px solid #fdd',
+        padding: '2px',
+        'background-color': '#fee',
+        opacity: 0.80 })
+        .appendTo("body").fadeIn(200);
+        
+        
+        showTooltip(item.pageX, item.pageY, tooltip);
+        }
+        });
+        
+        });
+        <script>
+            
+        </script>
+        
     </body>
 </html>
