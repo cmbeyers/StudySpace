@@ -73,10 +73,10 @@ def library():
         name=[]
         cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and day_index=%s ORDER BY hour ASC", ({str(libName)}, str(x)))
         entries = cur.fetchall();
-        weekDay = []
-        dayFillAverage = []
-        dataLabel = []
-        dayLabel = []
+        #weekDay = []
+        #dayFillAverage = []
+        #dataLabel = []
+        #dayLabel = []
         hour = []
         for entry in entries:
             hour.append(entry[1])
