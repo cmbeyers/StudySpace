@@ -6,11 +6,12 @@ app = Flask(__name__, static_url_path = "/static", static_folder = "static")
 
 mysql = MySQL()
 app.config.from_object('config')
+app.config['DEBUG'] = True
 
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_HOST'] = 'localhost'
 #app.config['MYSQL_USER'] = 'root'
-#app.config['MYSQL_PASSWORD'] = 'studyspace441'
+#app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'studyspace441'
 
 mysql.init_app(app)
 

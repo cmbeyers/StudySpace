@@ -86,9 +86,9 @@ def library():
             #weekDay.append(entry[2])
             #name=zip(weekDay, dayFillAverage, dataLabel, dayLabel)
         name = zip(hour, dayFillAverage)
-        #print name[0][0]
+        print name
         dayAverageInfo.append(name)
-    print dayAverageInfo
+   # print dayAverageInfo
 
     if libraryInfo:
         return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, libraryName=libraryName, dayAverageInfo=dayAverageInfo, currentDay=currentDay, labels=labels)
