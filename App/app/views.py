@@ -18,6 +18,11 @@ def index():
     
     return render_template('index.html')
 
+@app.route("/about")
+def about():
+    
+    return render_template('about.html')
+
 @app.route("/library")
 def library():
     entries = None;
@@ -47,23 +52,14 @@ def library():
     floorInfo=zip(floorName, floorOccupancy)
 
 
-    #Day Averages
-    #Temporarily only using Basement averages from Hour_Average Table until database is fixed
-#cur.execute("SELECT * FROM miStudySpace.Hour_Average WHERE library_name=%s and floor_name='Basement' ORDER BY hour ASC", {str(libName)})
-#   entries = cur.fetchall();
-#   hour = []
-#   fillAverage = []
-#   label = []
-#   for entry in entries:
-#      hour.append(entry[2])
-#      fillAverage.append(entry[3]*100)
-#      label.append(str(entry[3]*100)+"%")
-#   averageInfo = zip(hour, fillAverage, label)
-
     #Week Averages
-    #Temporarily only using hour 0 until database is fixed
-    #Need Database to provide only one number per day of the week
+
     currentDay = time.strftime("%w")
+
+    if currentDay == "0":
+        currentDay = "7";
+    currentDay = "data"+currentDay
+    print currentDay
     dayAverageInfo = []
     labels = [(1, "Monday"), (2, "Tuesday"), (3, "Wednesday"), (4, "Thursday"), (5, "Friday"), (6, "Saturday"), (7, "Sunday")]
 
@@ -72,12 +68,11 @@ def library():
         print x
         name=[]
         cur.execute("SELECT * FROM miStudySpace.Library_Hour_Average WHERE library_name=%s and day_index=%s ORDER BY hour ASC", ({str(libName)}, str(x)))
+
         entries = cur.fetchall();
-        weekDay = []
-        dayFillAverage = []
-        dataLabel = []
-        dayLabel = []
+
         hour = []
+        dayFillAverage = []
         for entry in entries:
             hour.append(entry[1])
             dayFillAverage.append(entry[4]*100)
@@ -88,10 +83,11 @@ def library():
         name = zip(hour, dayFillAverage)
         print name
         dayAverageInfo.append(name)
-   # print dayAverageInfo
+
 
     if libraryInfo:
         return render_template('library.html', libraryOccupancy=libraryOccupancy, floorInfo=floorInfo, libraryName=libraryName, dayAverageInfo=dayAverageInfo, currentDay=currentDay, labels=labels)
+
 
     else:
         return render_template('404.html')

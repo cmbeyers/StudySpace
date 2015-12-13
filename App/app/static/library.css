@@ -50,7 +50,7 @@ h2{
     overflow-x: scroll;
     white-space: nowrap;
     background-color:#1f253d;
-    height:190px;
+    height:240px;
 }
 
 .slide {
@@ -72,9 +72,7 @@ h2{
 
 #container{
     position:relative;
-    float:left;
-    right:-40%;
-    top:30px;
+    top:-70px;
     
 }
 
@@ -116,6 +114,17 @@ div.library.circle strong{
 .carousel-indicators{
     position:relative;
     bottom:0px;
+}
+
+
+#week-button{
+    display:inline-block;
+    margin-top:15px;
+}
+
+.dropdown{
+    float:right;
+    display:inline-block;
 }
 
 /*.floors-panel{
