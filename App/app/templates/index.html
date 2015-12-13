@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
     
     <head>
@@ -9,21 +9,16 @@
         <link rel="stylesheet" href="/static/global.css">
         <link rel="stylesheet" href="/static/index.css">
         <link rel="stylesheet" href="/static/rotating-card.css">
+        <link rel="stylesheet" href="/static/about.css">
         <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
     </head>
 
     <body>
-        <!--<nav class="navbar navbar-inverse">
-         <div class="container-fluid">
-         <div class="navbar-header">
-         <a class="navbar-brand" href="#">miStudySpace</a>
-         </div>
-         </div>
-         </nav>-->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 text-center title-bar">
-                    <h2 class="title">miStudySpace</h2>
+                    <h2 class="title">miStudySpace<a href="/about"><span class="glyphicon glyphicon-question-sign"></span></a></h2>
+                    
                 </div>
             </div>
 
@@ -32,10 +27,11 @@
                         <div class="card-container manual-flip">
                             <div class="card">
                                 <div class="front">
+                                    <button class="btn libtitle" onclick="rotateCard(this)">Shapiro</button>
                                     <a href="/library?name=shapiro">
-                                        <img src="/static/Shapiro.png" width="100%">
+                                        <img src="/static/Shapiro3.png" width="100%">
                                     </a>
-                                    <button class="btn btn-simple" onclick="rotateCard(this)">Hours &gt;</button>
+                                    <button class="btn btn-simple" onclick="rotateCard(this)">Hours <span class="glyphicon glyphicon-menu-right"></span></button>
                                 </div>
                                 <div class="back">
                                     <div class="header">
@@ -62,10 +58,11 @@
                         <div class="card-container manual-flip">
                             <div class="card">
                                 <div class="front">
+                                    <button class="btn libtitle" onclick="rotateCard(this)">Duderstadt</button>
                                     <a href="/library?name=shapiro">
-                                        <img src="/static/Dude.png" width="100%">
+                                        <img src="/static/Dude_bw.png" width="100%">
                                     </a>
-                                    <button class="btn btn-simple" onclick="rotateCard(this)">Hours &gt;</button>
+                                    <button class="btn btn-simple" onclick="rotateCard(this)">Hours <span class="glyphicon glyphicon-menu-right"></span></button>
                                 </div>
                                 <div class="back">
                                     <div class="header">
@@ -95,10 +92,11 @@
                         <div class="card-container manual-flip">
                             <div class="card">
                                 <div class="front">
+                                    <button class="btn libtitle" onclick="rotateCard(this)">Hatcher</button>
                                     <a href="/library?name=shapiro">
-                                        <img src="/static/Hatcher.png" width="100%">
+                                        <img src="/static/Hatcher_bw.png" width="100%">
                                     </a>
-                                    <button class="btn btn-simple" onclick="rotateCard(this)">Hours &gt;</button>
+                                    <button class="btn btn-simple" onclick="rotateCard(this)">Hours <span class="glyphicon glyphicon-menu-right"></span></button>
                                 </div>
                                 <div class="back">
                                     <div class="header">
@@ -124,10 +122,11 @@
                         <div class="card-container manual-flip">
                             <div class="card">
                                 <div class="front">
+                                    <button class="btn libtitle" onclick="rotateCard(this)">Law Lib</button>
                                     <a href="/library?name=shapiro">
-                                        <img src="/static/LawLib.png" width="100%">
+                                        <img src="/static/LawLib_bw.png" width="100%">
                                     </a>
-                                    <button class="btn btn-simple" onclick="rotateCard(this)">Hours &gt;</button>
+                                    <button class="btn btn-simple" onclick="rotateCard(this)">Hours <span class="glyphicon glyphicon-menu-right"></span></button>
                                 </div>
                                 <div class="back">
                                     <div class="header">

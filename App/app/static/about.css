@@ -1,0 +1,73 @@
+ .col-xs-12{
+  padding: 0;
+ }
+
+ .jumbotron {
+      /*background-color: #f4511e;
+      background-color:#9099b7;*/
+      background-color: #11A8AB;
+      color: #fff;
+      /*padding: 100px 25px;*/
+      padding: 10px;
+      font-family: Montserrat, sans-serif;
+      overflow: hidden;
+      font-size: 150px;
+      border: 0px;
+      margin:0px;
+ }
+
+.jumbotron h1{
+	font-size: 30px;
+	overflow: hidden;
+}
+
+
+.jumbotron h2{
+    font-weight: 400;
+    font-style: italic;
+}
+
+.container-fluid {
+    /*padding: 1.5px 1px;*/
+    padding-bottom: 0;
+    /*padding: 0px;*/
+ }
+
+span.icon:before { 
+  font-family: 'Glyphicons Halflings'; 
+  content: "\f015"; 
+}
+
+span.copyright{
+	color:  #1f253d;
+}
+
+.gi-2x{font-size: 2em;}
+.gi-3x{font-size: 3em;}
+.gi-4x{font-size: 4em;}
+.gi-5x{font-size: 5em;}
+
+.glyphicon{
+	margin-top: 15px;
+}
+
+ .icon-content h2{
+ 	font-size: 15px;
+ 	text-transform: uppercase;
+ 	line-height: 1.1;
+ }
+
+ .icon-content p{
+ 	font-size: 13px;
+ 	line-height: 1.1;
+ }
+
+
+
+  /* #cccccc is med grey 
+  #777777 dark grey
+  #4db53c green (weird)
+  #11A8AB TERQUOISE
+  #e64c65 pink
+  #1f253d navy
+  */

@@ -37,7 +37,7 @@ h2{
     overflow-x: scroll;
     white-space: nowrap;
     background-color:#1f253d;
-    height:190px;
+    height:210px;
 }
 
 .slide {
@@ -64,9 +64,7 @@ img{
 
 #container{
     position:relative;
-    float:left;
-    right:-40%;
-    top:30px;
+    top:-70px;
     
 }
 
