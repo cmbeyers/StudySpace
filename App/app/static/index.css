@@ -37,10 +37,49 @@
     /* styles for wide screens */
 }
 
+@media only screen and (max-width: 1024px){
+    .container{
+        width: 920px;
+        margin: inherit;
+        border: 30px;
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .container{
+        width: 400px;
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
 @media only screen and (max-width : 480px){
     /*styles for phone screens landscape mode */
+    img{
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 @media only screen and (max-width: 320px){
     /* styles for narrow/ portrait-mode phone screens*/
+    img{
+        max-width: 100%;
+        height: auto;
+    }
 }
