@@ -128,11 +128,22 @@ public class MailReader
           }
           if(messages.length != 0){
             //curMessage = messages[0];
-            System.out.println("Getting Attachment Of Email with subject : " + messages[messages.length - 1].getSubject());
-            curAttachment = getAttachment(messages[messages.length - 1]);
+            int i = 1;
+            while(messages.length - i >= 0){ //Find only messages containing the subject
+              if(messages[messages.length - i].getSubject().contains("Access_data")){
+                System.out.println("Getting Attachment Of Email with subject : " + messages[messages.length - i].getSubject());
+                curAttachment = getAttachment(messages[messages.length - i]);
+                break;
+              }
+              else
+                i++;
+            }
+            //curAttachment = getAttachment(messages[messages.length - 1]);
             for(Message x : messages){
-              System.out.println("Mail Subject: " + x.getSubject());
-              x.setFlag(Flags.Flag.DELETED, true);
+              if(x.getSubject().contains("Access_data")){
+                System.out.println("Mail Subject: " + x.getSubject());
+                x.setFlag(Flags.Flag.DELETED, true);
+              }
             }
             inbox.close(true);
             store.close();
