@@ -81,3 +81,51 @@ h1, h2, p, a, span{
     width: 300px;
     overflow: hidden;
 }
+
+
+.library-container{
+    margin-bottom:10%;
+    height:100%;
+}
+
+.library-image{
+    border:solid black 2px;
+    width:100%;
+
+
+}
+
+
+.library-name{
+    font-size:35px;
+    margin-top:-20%;
+    color:white;
+    text-decoration:none;
+    
+}
+
+
+@media only screen and (max-width: 1200px){
+    .library-name{
+        font-size:40px;
+        margin-top:-20%;
+    }
+}
+
+
+@media only screen and (max-width: 768px){
+    .library-name{
+        font-size:50px;
+        margin-top:-20%;
+    }
+}
+
+@media only screen and (max-width : 480px){
+
+}
+
+@media only screen and (max-width: 320px){
+    
+}
+
+
